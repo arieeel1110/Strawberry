@@ -21,7 +21,7 @@ import Parse
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow? = UIWindow(frame: UIScreen.mainScreen().bounds)
+    var window: UIWindow? //= UIWindow(frame: UIScreen.mainScreen().bounds)
 
     //--------------------------------------
     // MARK: - UIApplicationDelegate
@@ -82,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotificationTypes(types)
         }
         
-        self.window!.rootViewController = FirstViewController()
+//        self.window!.rootViewController = FirstViewController()
         return true
     }
 
