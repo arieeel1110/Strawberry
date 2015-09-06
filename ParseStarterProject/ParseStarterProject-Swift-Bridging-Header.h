@@ -11,4 +11,7 @@
 
 @import PureLayout;
 
+#import <UIKit/UIKit.h>
+#import <MDCSwipeToChoose/MDCSwipeToChoose.h>
+
 #endif
