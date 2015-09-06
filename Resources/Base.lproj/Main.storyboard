@@ -157,7 +157,13 @@
                             <outlet property="delegate" destination="Xa8-XS-6PI" id="1YC-N1-5bL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="My Favorites" id="t9x-q4-22Q"/>
+                    <navigationItem key="navigationItem" title="My Favorites" id="t9x-q4-22Q">
+                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="fXt-JV-Zf5">
+                            <connections>
+                                <action selector="logout:" destination="Xa8-XS-6PI" id="1d9-ia-rKp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cCT-XQ-sA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
