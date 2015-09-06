@@ -191,7 +191,7 @@
         <!--Feed-->
         <scene sceneID="rK9-75-WXo">
             <objects>
-                <viewController id="SoP-hg-b7c" sceneMemberID="viewController">
+                <viewController id="SoP-hg-b7c" customClass="CardViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="H9L-ZG-71E"/>
                         <viewControllerLayoutGuide type="bottom" id="vIv-cP-k8z"/>
