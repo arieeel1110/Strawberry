@@ -64,7 +64,7 @@ class CardView: MDCSwipeToChooseView {
         var topPadding:CGFloat = self.informationView.frame.maxY + 260
         var frame:CGRect = CGRectMake(leftPadding,
             topPadding,
-            floor(CGRectGetWidth(self.informationView.frame)),
+            floor(CGRectGetWidth(self.informationView.frame)-12),
             CGRectGetHeight(self.informationView.frame) -  topPadding)
         self.nameLabel = UILabel(frame:frame)
         self.nameLabel.numberOfLines = 4

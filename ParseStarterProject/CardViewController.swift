@@ -103,7 +103,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // It would be trivial to download these from a web service
         // as needed, but for the purposes of this sample app we'll
         // simply store them in memory.
-        return [News(name: "13 Ways of Staying Fit When There's No Time to Exercise".uppercaseString, image: UIImage(named: "finn"), author: "finn"), News(name: "HOW TO BE BEAUTIFUL", image: UIImage(named: "jake"), author: "jake"), News(name: "HOW TO KEEP FIT", image: UIImage(named: "fiona"), author: "fiona"), News(name: "HOW TO BE COOL", image: UIImage(named: "prince"), author: "prince")]
+        return [News(name: "13 Ways of Staying Fit When There's No Time to Exercise".uppercaseString, image: UIImage(named: "finn"), author: "finn"), News(name: "11 Steps to Better Skin".uppercaseString, image: UIImage(named: "jake"), author: "jake"), News(name: "How Teens Can Stay Fit".uppercaseString, image: UIImage(named: "fiona"), author: "fiona"), News(name: "how to be cool".uppercaseString, image: UIImage(named: "prince"), author: "prince")]
         
     }
     func popPersonViewWithFrame(frame:CGRect) -> CardView?{
