@@ -10,23 +10,17 @@ import UIKit
 
 class News: NSObject, Printable {
     
-    let Name: NSString
+    let Title: NSString
     let Image: UIImage!
-    let Age: NSNumber
-    let NumberOfSharedFriends: NSNumber?
-    let NumberOfSharedInterests: NSNumber
-    let NumberOfPhotos: NSNumber
+    let Author: NSString
     
     override var description: String {
-        return "Name: \(Name), \n Image: \(Image), \n Age: \(Age) \n NumberOfSharedFriends: \(NumberOfSharedFriends) \n NumberOfSharedInterests: \(NumberOfSharedInterests) \n NumberOfPhotos/: \(NumberOfPhotos)"
+        return "Name: \(Title), \n Image: \(Image), \n Author: \(Author) "
     }
     
-    init(name: NSString?, image: UIImage?, age: NSNumber?, sharedFriends: NSNumber?, sharedInterest: NSNumber?, photos:NSNumber?) {
-        self.Name = name ?? ""
+    init(name: NSString?, image: UIImage?, author: NSString?) {
+        self.Title = name ?? ""
         self.Image = image
-        self.Age = age ?? 0
-        self.NumberOfSharedFriends = sharedFriends ?? 0
-        self.NumberOfSharedInterests = sharedInterest ?? 0
-        self.NumberOfPhotos = photos ?? 0
+        self.Author = author ?? ""
     }
 }
