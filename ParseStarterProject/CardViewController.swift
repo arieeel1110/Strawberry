@@ -46,10 +46,6 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         self.backCardView = self.popPersonViewWithFrame(backCardViewFrame())!
         self.view.insertSubview(self.backCardView, belowSubview: self.frontCardView)
         
-        // Add buttons to programmatically swipe the view left or right.
-        // See the `nopeFrontCardView` and `likeFrontCardView` methods.
-        constructNopeButton()
-        constructLikedButton()
     }
     func suportedInterfaceOrientations() -> UIInterfaceOrientationMask{
         return UIInterfaceOrientationMask.Portrait
@@ -59,7 +55,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     // This is called when a user didn't fully swipe left or right.
     func viewDidCancelSwipe(view: UIView) -> Void{
         
-        println("You couldn't decide on \(self.currentPerson.Name)");
+        println("You couldn't decide on \(self.currentPerson.Title)");
     }
     
     // This is called then a user swipes the view fully left or right.
@@ -68,11 +64,11 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // MDCSwipeToChooseView shows "NOPE" on swipes to the left,
         // and "LIKED" on swipes to the right.
         if(wasChosenWithDirection == MDCSwipeDirection.Left){
-            println("You noped: \(self.currentPerson.Name)")
+            println("You noped: \(self.currentPerson.Title)")
         }
         else{
             
-            println("You liked: \(self.currentPerson.Name)")
+            println("You liked: \(self.currentPerson.Title)")
         }
         
         // MDCSwipeToChooseView removes the view from the view hierarchy
@@ -107,7 +103,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // It would be trivial to download these from a web service
         // as needed, but for the purposes of this sample app we'll
         // simply store them in memory.
-        return [News(name: "Finn", image: UIImage(named: "finn"), age: 21, sharedFriends: 3, sharedInterest: 4, photos: 5), News(name: "Jake", image: UIImage(named: "jake"), age: 21, sharedFriends: 3, sharedInterest: 4, photos: 5), News(name: "Fiona", image: UIImage(named: "fiona"), age: 21, sharedFriends: 3, sharedInterest: 4, photos: 5), News(name: "P.Gumball", image: UIImage(named: "prince"), age: 21, sharedFriends: 3, sharedInterest: 4, photos: 5)]
+        return [News(name: "13 Ways of Staying Fit When There's No Time to Exercise".uppercaseString, image: UIImage(named: "finn"), author: "finn"), News(name: "HOW TO BE BEAUTIFUL", image: UIImage(named: "jake"), author: "jake"), News(name: "HOW TO KEEP FIT", image: UIImage(named: "fiona"), author: "fiona"), News(name: "HOW TO BE COOL", image: UIImage(named: "prince"), author: "prince")]
         
     }
     func popPersonViewWithFrame(frame:CGRect) -> CardView?{
@@ -139,34 +135,15 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     }
     func frontCardViewFrame() -> CGRect{
         var horizontalPadding:CGFloat = 20.0
-        var topPadding:CGFloat = 60.0
-        var bottomPadding:CGFloat = 200.0
+        var topPadding:CGFloat = 80.0
+        var bottomPadding:CGFloat = 150.0
         return CGRectMake(horizontalPadding,topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding * 2), CGRectGetHeight(self.view.frame) - bottomPadding)
     }
     func backCardViewFrame() ->CGRect{
         var frontFrame:CGRect = frontCardViewFrame()
         return CGRectMake(frontFrame.origin.x, frontFrame.origin.y + 10.0, CGRectGetWidth(frontFrame), CGRectGetHeight(frontFrame))
     }
-    func constructNopeButton() -> Void{
-        let button:UIButton =  UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        let image:UIImage = UIImage(named:"nope")!
-        button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
-        button.setImage(image, forState: UIControlState.Normal)
-        button.tintColor = UIColor(red: 247.0/255.0, green: 91.0/255.0, blue: 37.0/255.0, alpha: 1.0)
-        button.addTarget(self, action: "nopeFrontCardView", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(button)
-    }
     
-    func constructLikedButton() -> Void{
-        let button:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-        let image:UIImage = UIImage(named:"liked")!
-        button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
-        button.setImage(image, forState:UIControlState.Normal)
-        button.tintColor = UIColor(red: 29.0/255.0, green: 245.0/255.0, blue: 106.0/255.0, alpha: 1.0)
-        button.addTarget(self, action: "likeFrontCardView", forControlEvents: UIControlEvents.TouchUpInside)
-        self.view.addSubview(button)
-        
-    }
     func nopeFrontCardView() -> Void{
         self.frontCardView.mdc_swipe(MDCSwipeDirection.Left)
     }

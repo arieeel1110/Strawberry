@@ -24,7 +24,7 @@ class ImagelabelView: UIView{
         
         super.init(frame: frame)
         constructImageView(image)
-        constructLabel(text)
+        //constructLabel(text)
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -37,22 +37,21 @@ class ImagelabelView: UIView{
         
         let framex = CGRectMake(floor((CGRectGetWidth(self.bounds) - image.size.width)/2),
             topPadding,
-            image.size.width,
-            image.size.height)
+            300,
+            400)
         imageView = UIImageView(frame: framex)
         imageView.image = image
         addSubview(self.imageView)
     }
     
-    func constructLabel(text:String) -> Void{
-        var height:CGFloat = 18.0
-        let frame2 = CGRectMake(0,
-            CGRectGetMaxY(self.imageView.frame),
-            CGRectGetWidth(self.bounds),
-            height);
-        self.label = UILabel(frame: frame2)
-        label.text = text
-        addSubview(label)
-        
-    }
+//    func constructLabel(text:String) -> Void{
+//        var height:CGFloat = 18.0
+//        let frame2 = CGRectMake(0,
+//            CGRectGetMaxY(self.imageView.frame),
+//            CGRectGetWidth(self.bounds),
+//            height);
+//        self.label = UILabel(frame: frame2)
+//        label.text = text
+//        addSubview(label)
+//    }
 }
