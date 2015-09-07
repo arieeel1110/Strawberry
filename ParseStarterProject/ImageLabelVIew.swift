@@ -23,7 +23,7 @@ class ImagelabelView: UIView{
     init(frame: CGRect, image: UIImage, text: String) {
         
         super.init(frame: frame)
-        constructImageView(image)
+        constructImageView(image,frame:frame)
         //constructLabel(text)
     }
     
@@ -31,15 +31,15 @@ class ImagelabelView: UIView{
         super.init(coder: aDecoder)
     }
     
-    func constructImageView(image:UIImage) -> Void{
+    func constructImageView(image:UIImage,frame:CGRect) -> Void{
         
         let topPadding:CGFloat = 10.0
         
-        let framex = CGRectMake(floor((CGRectGetWidth(self.bounds) - image.size.width)/2),
-            topPadding,
-            300,
-            400)
-        imageView = UIImageView(frame: framex)
+        //let framex = CGRectMake(floor((CGRectGetWidth(self.bounds) - image.size.width)/2),
+            //topPadding,
+            //300,
+           // 400)
+        imageView = UIImageView(frame: frame)
         imageView.image = image
         addSubview(self.imageView)
     }

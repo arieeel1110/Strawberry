@@ -16,9 +16,7 @@ class CardView: MDCSwipeToChooseView {
     var informationView: UIView!
     var nameLabel: UILabel!
     var authorLabel: UILabel!
-    //var carmeraImageLabelView:ImagelabelView!
-    //var interestsImageLabelView: ImagelabelView!
-    //var friendsImageLabelView: ImagelabelView!
+    var carmeraImageLabelView:ImagelabelView!
     
     init(frame: CGRect, person: News, options: MDCSwipeToChooseViewOptions) {
         
@@ -53,14 +51,13 @@ class CardView: MDCSwipeToChooseView {
         self.addSubview(self.informationView)
         constructTitleLabel()
         constructAuthorLabel()
-        //drawImagesAndText()
-        //constructCameraImageLabelView()
+        constructCameraImageLabelView()
         //constructInterestsImageLabelView()
         //constructFriendsImageLabelView()
     }
     
     func constructTitleLabel() -> Void{
-        var leftPadding:CGFloat = 12.0
+        var leftPadding:CGFloat = 10.0
         var topPadding:CGFloat = self.informationView.frame.maxY + 260
         var frame:CGRect = CGRectMake(leftPadding,
             topPadding,
@@ -80,7 +77,7 @@ class CardView: MDCSwipeToChooseView {
     }
     
     func constructAuthorLabel() -> Void{
-        var leftPadding:CGFloat = 12.0;
+        var leftPadding:CGFloat = 36.0;
         var topPadding:CGFloat = self.informationView.frame.maxY - 50
         
         var frame:CGRect = CGRectMake(leftPadding,
@@ -88,7 +85,7 @@ class CardView: MDCSwipeToChooseView {
             floor(CGRectGetWidth(self.informationView.frame)/2+150.0),
             CGRectGetHeight(self.informationView.frame) + 50)
         self.authorLabel = UILabel(frame:frame)
-        self.authorLabel.text = "@\(person.Author)"
+        self.authorLabel.text = "\(person.Author)"
         
         self.authorLabel.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(20))
         self.authorLabel.layer.shadowOpacity = 0.7
@@ -98,26 +95,17 @@ class CardView: MDCSwipeToChooseView {
     }
     
     func constructCameraImageLabelView() -> Void{
-        var rightPadding:CGFloat = 10.0
-        var image:UIImage = UIImage(named:"camera")!
+        var image:UIImage = UIImage(named:"star")!
         
-        var frame:CGRect = CGRect(x:20.0, y: 0,
-            width: ChoosePersonViewImageLabelWidth,
-            height: CGRectGetHeight(self.informationView.bounds))
-        var view:ImagelabelView = ImagelabelView(frame:frame, image:image, text:self.authorLabel.text!)
-        view.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
-        
+        var frame:CGRect = CGRect(x:5.0, y: 190.5,
+            width: 25,
+            height:25)
+        self.carmeraImageLabelView = ImagelabelView(frame:frame, image:image, text:self.authorLabel.text!)
+        //self.carmeraImageLabelView.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
+
         //self.carmeraImageLabelView = buildImageLabelViewLeftOf(CGRectGetWidth(self.informationView.bounds), image:image, text:person.NumberOfPhotos.stringValue)
         
-        self.informationView.addSubview(view)
+        insertSubview(self.carmeraImageLabelView,aboveSubview:self.informationView)
     }
     
-    func buildImageLabelViewLeftOf(x:CGFloat, image:UIImage, text:String) -> ImagelabelView{
-        var frame:CGRect = CGRect(x:x-ChoosePersonViewImageLabelWidth, y: 0,
-            width: ChoosePersonViewImageLabelWidth,
-            height: CGRectGetHeight(self.informationView.bounds))
-        var view:ImagelabelView = ImagelabelView(frame:frame, image:image, text:text)
-        view.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
-        return view
-    }
 }
