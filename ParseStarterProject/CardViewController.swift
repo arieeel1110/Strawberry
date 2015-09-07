@@ -134,9 +134,9 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         
     }
     func frontCardViewFrame() -> CGRect{
-        var horizontalPadding:CGFloat = 20.0
-        var topPadding:CGFloat = 80.0
-        var bottomPadding:CGFloat = 150.0
+        var horizontalPadding:CGFloat = 0.1
+        var topPadding:CGFloat = 60
+        var bottomPadding:CGFloat = 100
         return CGRectMake(horizontalPadding,topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding * 2), CGRectGetHeight(self.view.frame) - bottomPadding)
     }
     func backCardViewFrame() ->CGRect{

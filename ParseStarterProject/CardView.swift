@@ -45,7 +45,6 @@ class CardView: MDCSwipeToChooseView {
             CGRectGetWidth(self.bounds),
             0);
         self.informationView = UIView(frame:bottomFrame)
-        self.informationView.backgroundColor = UIColor.whiteColor()
         self.informationView.clipsToBounds = true
         self.informationView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin
         self.addSubview(self.informationView)
@@ -58,7 +57,7 @@ class CardView: MDCSwipeToChooseView {
     
     func constructTitleLabel() -> Void{
         var leftPadding:CGFloat = 10.0
-        var topPadding:CGFloat = self.informationView.frame.maxY + 260
+        var topPadding:CGFloat = self.informationView.frame.maxY + 295
         var frame:CGRect = CGRectMake(leftPadding,
             topPadding,
             floor(CGRectGetWidth(self.informationView.frame)-12),
@@ -77,8 +76,8 @@ class CardView: MDCSwipeToChooseView {
     }
     
     func constructAuthorLabel() -> Void{
-        var leftPadding:CGFloat = 36.0;
-        var topPadding:CGFloat = self.informationView.frame.maxY - 50
+        var leftPadding:CGFloat = 37.0;
+        var topPadding:CGFloat = self.informationView.frame.maxY - 59
         
         var frame:CGRect = CGRectMake(leftPadding,
             topPadding,
@@ -97,7 +96,7 @@ class CardView: MDCSwipeToChooseView {
     func constructCameraImageLabelView() -> Void{
         var image:UIImage = UIImage(named:"star")!
         
-        var frame:CGRect = CGRect(x:5.0, y: 190.5,
+        var frame:CGRect = CGRect(x:5.0, y: 210.5,
             width: 25,
             height:25)
         self.carmeraImageLabelView = ImagelabelView(frame:frame, image:image, text:self.authorLabel.text!)
