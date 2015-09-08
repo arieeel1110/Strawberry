@@ -9,6 +9,8 @@
 import UIKit
 import MDCSwipeToChoose
 
+var favor = [String]()
+
 class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
     var people:[News] = []
@@ -17,6 +19,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     var currentPerson:News!
     var frontCardView:CardView!
     var backCardView:CardView!
+    
+    //@IBOutlet var category: UIButton!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -47,6 +51,15 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         self.view.insertSubview(self.backCardView, belowSubview: self.frontCardView)
         
     }
+    
+    @IBAction func Category(sender: AnyObject) {
+        var popViewController : PopUpViewController = PopUpViewController(nibName: "PopUpViewController", bundle: nil)
+        popViewController.title = "This is a popup view"
+        popViewController.showInView(self.view, withImage: UIImage(named: "camera"), withMessage: "You just triggered a great popup window", animated: true)
+        
+    }
+    
+    
     func suportedInterfaceOrientations() -> UIInterfaceOrientationMask{
         return UIInterfaceOrientationMask.Portrait
     }
@@ -69,6 +82,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         else{
             
             println("You liked: \(self.currentPerson.Title)")
+            favor.append("\(self.currentPerson.Title)")
         }
         
         // MDCSwipeToChooseView removes the view from the view hierarchy

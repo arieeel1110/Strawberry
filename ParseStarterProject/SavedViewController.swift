@@ -61,22 +61,24 @@ class SavedViewController: UITableViewController {
                         self.userids.append(user.objectId!)
                         
                     }
-                    
                 }
-                
             }
             
             println(self.usernames)
             println(self.userids)
             
+            for title in favor {
+                 println(favor)
+            }
+            
             self.tableView.reloadData()
             
         })
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         //self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,14 +97,16 @@ class SavedViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return usernames.count
+        
+        return favor.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         
-        cell.textLabel?.text = usernames[indexPath.row]
+        cell.textLabel?.text = favor[indexPath.row]
+        //println(indexPath.row)
         
         return cell
     }

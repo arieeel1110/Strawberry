@@ -133,7 +133,7 @@
         <scene sceneID="9Ca-50-W1G">
             <objects>
                 <navigationController id="ETj-yj-DFg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" id="CUG-Hn-O4R"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="group" id="CUG-Hn-O4R"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lAc-Cx-P3k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -185,7 +185,7 @@
         <scene sceneID="aJf-Ru-mog">
             <objects>
                 <navigationController id="T3G-z1-mI2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="PTe-qn-bfM"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="book" id="PTe-qn-bfM"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bnP-oT-SST">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -212,7 +212,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed" id="ege-Mj-fMa"/>
+                    <navigationItem key="navigationItem" title="Feed" id="ege-Mj-fMa">
+                        <barButtonItem key="rightBarButtonItem" image="camera" id="VCV-DC-2JT">
+                            <connections>
+                                <action selector="Category:" destination="SoP-hg-b7c" id="rMl-YG-EeH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqc-0p-r0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -243,6 +249,9 @@
     </scenes>
     <resources>
         <image name="back" width="1000" height="1000"/>
+        <image name="book" width="25" height="25"/>
+        <image name="camera" width="25" height="25"/>
+        <image name="group" width="25" height="25"/>
         <image name="pencil" width="256" height="256"/>
     </resources>
 </document>
