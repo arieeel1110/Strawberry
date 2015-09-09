@@ -25,8 +25,6 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		8D058DF01B9DE96800ECE6D9 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D058DEF1B9DE96800ECE6D9 /* back.png */; };
-		8D058DF21B9EB3F000ECE6D9 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D058DF11B9EB3F000ECE6D9 /* PopUpViewController.swift */; };
-		8D058DF91B9EB8D700ECE6D9 /* PopUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D058DF81B9EB8D700ECE6D9 /* PopUpViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,8 +53,6 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		8D058DEF1B9DE96800ECE6D9 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		8D058DF11B9EB3F000ECE6D9 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
-		8D058DF81B9EB8D700ECE6D9 /* PopUpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopUpViewController.xib; sourceTree = "<group>"; };
 		B40786A51B0CDF078EC3A499 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7506D9A58F67FFB2804FA7C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				3E3D583F1B9BEA8C00926ED0 /* CardViewController.swift */,
-				8D058DF11B9EB3F000ECE6D9 /* PopUpViewController.swift */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -108,7 +103,6 @@
 		3E3D58421B9BF2C100926ED0 /* views */ = {
 			isa = PBXGroup;
 			children = (
-				8D058DF81B9EB8D700ECE6D9 /* PopUpViewController.xib */,
 				3E3D58451B9BF31300926ED0 /* ImageLabelVIew.swift */,
 				3E3D58471B9BF3D100926ED0 /* CardView.swift */,
 			);
@@ -273,7 +267,6 @@
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 				8D058DF01B9DE96800ECE6D9 /* back.png in Resources */,
-				8D058DF91B9EB8D700ECE6D9 /* PopUpViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +346,6 @@
 				3ED05A331B956B2700050E5F /* SavedViewController.swift in Sources */,
 				3E3D58461B9BF31300926ED0 /* ImageLabelVIew.swift in Sources */,
 				3E3D58401B9BEA8C00926ED0 /* CardViewController.swift in Sources */,
-				8D058DF21B9EB3F000ECE6D9 /* PopUpViewController.swift in Sources */,
 				3E7048DC1B804D60004665D1 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

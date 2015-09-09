@@ -82,7 +82,6 @@ class LoginViewController: UIViewController {
             user.password = password
             
             
-            
             user.signUpInBackgroundWithBlock ({ (success, error) -> Void in
                 
                 self.activityIndicator.stopAnimating()
