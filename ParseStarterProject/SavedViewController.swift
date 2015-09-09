@@ -119,7 +119,7 @@ class SavedViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         
         cell.textLabel?.numberOfLines = 3
-        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(15))
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue", size: CGFloat(15))
         cell.textLabel?.text = favorTitle[indexPath.row]
         
         
