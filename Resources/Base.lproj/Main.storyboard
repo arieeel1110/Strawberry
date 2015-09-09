@@ -140,25 +140,61 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Xa8-XS-6PI" kind="relationship" relationship="rootViewController" id="7UW-vt-K52"/>
+                        <segue destination="GmP-J4-JLe" kind="relationship" relationship="rootViewController" id="MmS-D8-CvY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okN-lM-NyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="539.5" y="673.5"/>
         </scene>
+        <!--Home-->
+        <scene sceneID="vIB-zc-SO3">
+            <objects>
+                <viewController id="GmP-J4-JLe" customClass="FavouriteController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LYn-Kx-hVY"/>
+                        <viewControllerLayoutGuide type="bottom" id="dmV-Jn-AQI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eEo-UF-j0l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-cx-46B">
+                                <rect key="frame" x="148" y="287" width="104" height="106"/>
+                                <state key="normal" title="List" image="favourite">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Xa8-XS-6PI" kind="show" id="iw1-qX-HiY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="8T2-Qy-Tvx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vOz-YT-tkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048.5" y="652.5"/>
+        </scene>
         <!--My Favorites-->
         <scene sceneID="AJ5-gA-ATL">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cCT-XQ-sA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="VBE-PS-i2F">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <tableViewController id="Xa8-XS-6PI" customClass="SavedViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wc7-r9-uaP">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wc7-r9-uaP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="9AP-gD-vd2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="98" id="m5I-Y8-HCi">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9AP-gD-vd2" id="cIa-Eb-tqp">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m5I-Y8-HCi" id="77V-HB-D1X">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -177,9 +213,8 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cCT-XQ-sA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040.5" y="673.5"/>
+            <point key="canvasLocation" x="1495.5" y="666.5"/>
         </scene>
         <!--Feed-->
         <scene sceneID="aJf-Ru-mog">
@@ -247,25 +282,9 @@
             <point key="canvasLocation" x="-54.5" y="180.5"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="YSy-4N-1Nx">
-            <objects>
-                <viewController id="B8m-Xv-OGN" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d5N-ey-Pry"/>
-                        <viewControllerLayoutGuide type="bottom" id="RPn-f4-HJY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="vSs-hY-uL7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="a9b-eH-AT2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
-        <!--View Controller-->
         <scene sceneID="JA1-7q-E53">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lNZ-Qg-WtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="aHC-Qa-WyI" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FpM-Q6-mMZ"/>
@@ -277,7 +296,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lNZ-Qg-WtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
@@ -285,6 +303,7 @@
         <image name="back" width="1000" height="1000"/>
         <image name="book" width="25" height="25"/>
         <image name="camera" width="25" height="25"/>
+        <image name="favourite" width="512" height="512"/>
         <image name="group" width="25" height="25"/>
         <image name="pencil" width="256" height="256"/>
     </resources>

@@ -43,7 +43,10 @@ class SavedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //*** delete lines
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
         var query = PFUser.query()
         
         query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -67,8 +70,8 @@ class SavedViewController: UITableViewController {
             println(self.usernames)
             println(self.userids)
             
-            for title in favor {
-                 println(favor)
+            for title in favorTitle {
+                 println(favorTitle)
             }
             
             self.tableView.reloadData()
@@ -80,6 +83,15 @@ class SavedViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
          //self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -99,17 +111,42 @@ class SavedViewController: UITableViewController {
         // Return the number of rows in the section.
         
         //return favor.count
-        return favor.count
+        return favorTitle.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
         
-        cell.textLabel?.text = favor[indexPath.row]
+        cell.textLabel?.numberOfLines = 3
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(15))
+        cell.textLabel?.text = favorTitle[indexPath.row]
+        
+        
+        
+        cell.imageView?.image = maskRoundedImage(favorImage[indexPath.row])
         //println(indexPath.row)
         
         return cell
+    }
+    
+    func maskRoundedImage(image: UIImage) -> UIImage {
+        
+        let imageView = UIImageView(frame: CGRectMake(0, 0, 80, 90))
+        imageView.image = image
+        
+        var layer: CALayer = CALayer()
+        layer = imageView.layer
+        
+        layer.masksToBounds = true
+        layer.cornerRadius = CGFloat(40)
+        
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        layer.renderInContext(UIGraphicsGetCurrentContext())
+        var roundedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return roundedImage
     }
 
 

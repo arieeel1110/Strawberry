@@ -9,7 +9,8 @@
 import UIKit
 import MDCSwipeToChoose
 
-var favor = [String]()
+var favorTitle = [String]()
+var favorImage = [UIImage]()
 
 class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
@@ -129,11 +130,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         button2.tag=1
         
         menuContainer.addSubview(button2)
-
         
     }
-    
-    
     
     
     func suportedInterfaceOrientations() -> UIInterfaceOrientationMask{
@@ -158,7 +156,9 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         else{
             
             println("You liked: \(self.currentPerson.Title)")
-            favor.append("\(self.currentPerson.Title)")
+            
+            favorTitle.append("\(self.currentPerson.Title)".lowercaseString)
+            favorImage.append(self.currentPerson.Image)
         }
         
         // MDCSwipeToChooseView removes the view from the view hierarchy
