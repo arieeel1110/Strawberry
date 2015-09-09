@@ -129,11 +129,11 @@
             </objects>
             <point key="canvasLocation" x="-506.5" y="180.5"/>
         </scene>
-        <!--Favorites-->
+        <!--Home-->
         <scene sceneID="9Ca-50-W1G">
             <objects>
                 <navigationController id="ETj-yj-DFg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="group" id="CUG-Hn-O4R"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="group" id="CUG-Hn-O4R"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lAc-Cx-P3k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -216,11 +216,11 @@
             </objects>
             <point key="canvasLocation" x="1495.5" y="666.5"/>
         </scene>
-        <!--Feed-->
+        <!--World-->
         <scene sceneID="aJf-Ru-mog">
             <objects>
                 <navigationController id="T3G-z1-mI2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="book" id="PTe-qn-bfM"/>
+                    <tabBarItem key="tabBarItem" title="World" image="book" id="PTe-qn-bfM"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bnP-oT-SST">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -234,7 +234,7 @@
             </objects>
             <point key="canvasLocation" x="539.5" y="-163.5"/>
         </scene>
-        <!--Feed-->
+        <!--World-->
         <scene sceneID="rK9-75-WXo">
             <objects>
                 <viewController id="SoP-hg-b7c" customClass="CardViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
@@ -247,7 +247,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed" id="ege-Mj-fMa">
+                    <navigationItem key="navigationItem" title="World" id="ege-Mj-fMa">
                         <barButtonItem key="rightBarButtonItem" image="camera" id="VCV-DC-2JT">
                             <connections>
                                 <action selector="Category:" destination="SoP-hg-b7c" id="rMl-YG-EeH"/>
@@ -280,23 +280,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DHw-rA-qMw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-54.5" y="180.5"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="JA1-7q-E53">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lNZ-Qg-WtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="aHC-Qa-WyI" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FpM-Q6-mMZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="WY5-Dl-Rzo"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0fp-43-Yf7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-            </objects>
         </scene>
     </scenes>
     <resources>

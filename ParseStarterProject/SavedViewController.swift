@@ -116,14 +116,18 @@ class SavedViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
         cell.textLabel?.numberOfLines = 3
-        cell.textLabel?.font = UIFont(name: "HelveticaNeue", size: CGFloat(15))
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
         cell.textLabel?.text = favorTitle[indexPath.row]
         
+        cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
+        cell.detailTextLabel?.text = "@\(favorAuthor[indexPath.row])"
+        cell.detailTextLabel?.textColor = UIColor.grayColor()
         
         
+    
         cell.imageView?.image = maskRoundedImage(favorImage[indexPath.row])
         //println(indexPath.row)
         
@@ -132,14 +136,14 @@ class SavedViewController: UITableViewController {
     
     func maskRoundedImage(image: UIImage) -> UIImage {
         
-        let imageView = UIImageView(frame: CGRectMake(0, 0, 80, 90))
+        let imageView = UIImageView(frame: CGRectMake(0, 0, 60, 70))
         imageView.image = image
         
         var layer: CALayer = CALayer()
         layer = imageView.layer
         
         layer.masksToBounds = true
-        layer.cornerRadius = CGFloat(40)
+        layer.cornerRadius = CGFloat(30)
         
         UIGraphicsBeginImageContext(imageView.bounds.size)
         layer.renderInContext(UIGraphicsGetCurrentContext())

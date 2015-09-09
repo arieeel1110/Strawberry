@@ -11,6 +11,7 @@ import MDCSwipeToChoose
 
 var favorTitle = [String]()
 var favorImage = [UIImage]()
+var favorAuthor = [String]()
 
 class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
@@ -159,6 +160,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             
             favorTitle.append("\(self.currentPerson.Title)".lowercaseString)
             favorImage.append(self.currentPerson.Image)
+            favorAuthor.append("\(self.currentPerson.Author)")
         }
         
         // MDCSwipeToChooseView removes the view from the view hierarchy
