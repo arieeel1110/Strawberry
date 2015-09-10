@@ -38,8 +38,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         preview.image = image
     
         self.dismissViewControllerAnimated(true, completion: nil)
-        
-        //submit.titleLabel?.text = "Change"
     }
 
     
