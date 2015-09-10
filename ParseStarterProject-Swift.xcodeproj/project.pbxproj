@@ -25,6 +25,7 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		8D058DF01B9DE96800ECE6D9 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D058DEF1B9DE96800ECE6D9 /* back.png */; };
+		8D59AEFB1BA127B30034EF36 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D59AEFA1BA127B30034EF36 /* PostViewController.swift */; };
 		8DCE3A5B1BA06EDD00282847 /* FavouriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE3A5A1BA06EDD00282847 /* FavouriteController.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		8D058DEF1B9DE96800ECE6D9 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		8D59AEFA1BA127B30034EF36 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		8DCE3A5A1BA06EDD00282847 /* FavouriteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteController.swift; sourceTree = "<group>"; };
 		B40786A51B0CDF078EC3A499 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7506D9A58F67FFB2804FA7C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				3E3D583F1B9BEA8C00926ED0 /* CardViewController.swift */,
+				8D59AEFA1BA127B30034EF36 /* PostViewController.swift */,
 			);
 			name = Feed;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				3E7048DF1B805B7E004665D1 /* LoginViewController.swift in Sources */,
 				3E3D584B1B9BF41C00926ED0 /* News.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				8D59AEFB1BA127B30034EF36 /* PostViewController.swift in Sources */,
 				3ED05A331B956B2700050E5F /* SavedViewController.swift in Sources */,
 				3E3D58461B9BF31300926ED0 /* ImageLabelVIew.swift in Sources */,
 				8DCE3A5B1BA06EDD00282847 /* FavouriteController.swift in Sources */,

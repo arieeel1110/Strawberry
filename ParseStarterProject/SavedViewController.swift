@@ -125,8 +125,6 @@ class SavedViewController: UITableViewController {
         cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
         cell.detailTextLabel?.text = "@\(favorAuthor[indexPath.row])"
         cell.detailTextLabel?.textColor = UIColor.grayColor()
-        
-        
     
         cell.imageView?.image = maskRoundedImage(favorImage[indexPath.row])
         //println(indexPath.row)
@@ -136,14 +134,14 @@ class SavedViewController: UITableViewController {
     
     func maskRoundedImage(image: UIImage) -> UIImage {
         
-        let imageView = UIImageView(frame: CGRectMake(0, 0, 60, 70))
+        let imageView = UIImageView(frame: CGRectMake(0, 0, 50, 60))
         imageView.image = image
         
         var layer: CALayer = CALayer()
         layer = imageView.layer
         
         layer.masksToBounds = true
-        layer.cornerRadius = CGFloat(30)
+        layer.cornerRadius = CGFloat(25)
         
         UIGraphicsBeginImageContext(imageView.bounds.size)
         layer.renderInContext(UIGraphicsGetCurrentContext())

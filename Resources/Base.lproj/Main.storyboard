@@ -180,12 +180,6 @@
         <!--My Favorites-->
         <scene sceneID="AJ5-gA-ATL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cCT-XQ-sA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="VBE-PS-i2F">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
                 <tableViewController id="Xa8-XS-6PI" customClass="SavedViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wc7-r9-uaP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -213,6 +207,12 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cCT-XQ-sA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="VBE-PS-i2F">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="1495.5" y="666.5"/>
         </scene>
@@ -248,6 +248,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="World" id="ege-Mj-fMa">
+                        <barButtonItem key="leftBarButtonItem" title="Post" id="6gp-j2-yop">
+                            <connections>
+                                <segue destination="wKx-dT-CCX" kind="show" id="lp8-U4-d32"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="camera" id="VCV-DC-2JT">
                             <connections>
                                 <action selector="Category:" destination="SoP-hg-b7c" id="rMl-YG-EeH"/>
@@ -259,6 +264,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqc-0p-r0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1040.5" y="-163.5"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="ed9-Hg-qrK">
+            <objects>
+                <viewController id="wKx-dT-CCX" customClass="PostViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4VQ-mB-M60"/>
+                        <viewControllerLayoutGuide type="bottom" id="ugh-Wh-gYn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DWs-xH-Y64">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="upload" translatesAutoresizingMaskIntoConstraints="NO" id="KHD-Oc-nbG">
+                                <rect key="frame" x="78" y="259" width="128" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Qhj-DD-5Hl"/>
+                                    <constraint firstAttribute="width" constant="128" id="z6g-SW-EVW"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uc-FX-PL5">
+                                <rect key="frame" x="138" y="462" width="83" height="30"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButton:" destination="wKx-dT-CCX" eventType="touchUpInside" id="k7x-ud-3BD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36b-zb-yb6">
+                                <rect key="frame" x="235" y="379" width="65" height="30"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadImgae:" destination="wKx-dT-CCX" eventType="touchUpInside" id="cuT-LG-NS8"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8c-wP-Jnr">
+                                <rect key="frame" x="58" y="116" width="227" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="rCN-R1-W1U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="preview" destination="KHD-Oc-nbG" id="tuo-iQ-yU9"/>
+                        <outlet property="text" destination="S8c-wP-Jnr" id="rJL-5o-HXH"/>
+                        <outlet property="upload" destination="36b-zb-yb6" id="Uq2-3Z-HOF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R0C-a5-17A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1595.5" y="-197.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qlZ-3g-sd5">
@@ -289,5 +352,6 @@
         <image name="favourite" width="512" height="512"/>
         <image name="group" width="25" height="25"/>
         <image name="pencil" width="256" height="256"/>
+        <image name="upload" width="256" height="256"/>
     </resources>
 </document>
