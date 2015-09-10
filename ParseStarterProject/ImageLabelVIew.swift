@@ -43,15 +43,4 @@ class ImagelabelView: UIView{
         imageView.image = image
         addSubview(self.imageView)
     }
-    
-//    func constructLabel(text:String) -> Void{
-//        var height:CGFloat = 18.0
-//        let frame2 = CGRectMake(0,
-//            CGRectGetMaxY(self.imageView.frame),
-//            CGRectGetWidth(self.bounds),
-//            height);
-//        self.label = UILabel(frame: frame2)
-//        label.text = text
-//        addSubview(label)
-//    }
 }

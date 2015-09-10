@@ -129,36 +129,72 @@
             </objects>
             <point key="canvasLocation" x="-506.5" y="180.5"/>
         </scene>
-        <!--Favorites-->
+        <!--Home-->
         <scene sceneID="9Ca-50-W1G">
             <objects>
                 <navigationController id="ETj-yj-DFg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" id="CUG-Hn-O4R"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="group" id="CUG-Hn-O4R"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lAc-Cx-P3k">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Xa8-XS-6PI" kind="relationship" relationship="rootViewController" id="7UW-vt-K52"/>
+                        <segue destination="GmP-J4-JLe" kind="relationship" relationship="rootViewController" id="MmS-D8-CvY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okN-lM-NyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="539.5" y="673.5"/>
         </scene>
+        <!--Home-->
+        <scene sceneID="vIB-zc-SO3">
+            <objects>
+                <viewController id="GmP-J4-JLe" customClass="FavouriteController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LYn-Kx-hVY"/>
+                        <viewControllerLayoutGuide type="bottom" id="dmV-Jn-AQI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eEo-UF-j0l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-cx-46B">
+                                <rect key="frame" x="148" y="287" width="104" height="106"/>
+                                <state key="normal" title="List" image="favourite">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Xa8-XS-6PI" kind="show" id="iw1-qX-HiY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Home" id="8T2-Qy-Tvx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vOz-YT-tkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048.5" y="652.5"/>
+        </scene>
         <!--My Favorites-->
         <scene sceneID="AJ5-gA-ATL">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cCT-XQ-sA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="VBE-PS-i2F">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <tableViewController id="Xa8-XS-6PI" customClass="SavedViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wc7-r9-uaP">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wc7-r9-uaP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="9AP-gD-vd2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="98" id="m5I-Y8-HCi">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9AP-gD-vd2" id="cIa-Eb-tqp">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m5I-Y8-HCi" id="77V-HB-D1X">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -177,15 +213,14 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cCT-XQ-sA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1040.5" y="673.5"/>
+            <point key="canvasLocation" x="1495.5" y="666.5"/>
         </scene>
-        <!--Feed-->
+        <!--World-->
         <scene sceneID="aJf-Ru-mog">
             <objects>
                 <navigationController id="T3G-z1-mI2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" id="PTe-qn-bfM"/>
+                    <tabBarItem key="tabBarItem" title="World" image="book" id="PTe-qn-bfM"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bnP-oT-SST">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -199,7 +234,7 @@
             </objects>
             <point key="canvasLocation" x="539.5" y="-163.5"/>
         </scene>
-        <!--Feed-->
+        <!--World-->
         <scene sceneID="rK9-75-WXo">
             <objects>
                 <viewController id="SoP-hg-b7c" customClass="CardViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
@@ -212,7 +247,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed" id="ege-Mj-fMa"/>
+                    <navigationItem key="navigationItem" title="World" id="ege-Mj-fMa">
+                        <barButtonItem key="rightBarButtonItem" image="camera" id="VCV-DC-2JT">
+                            <connections>
+                                <action selector="Category:" destination="SoP-hg-b7c" id="rMl-YG-EeH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqc-0p-r0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -243,6 +284,10 @@
     </scenes>
     <resources>
         <image name="back" width="1000" height="1000"/>
+        <image name="book" width="25" height="25"/>
+        <image name="camera" width="25" height="25"/>
+        <image name="favourite" width="512" height="512"/>
+        <image name="group" width="25" height="25"/>
         <image name="pencil" width="256" height="256"/>
     </resources>
 </document>

@@ -43,7 +43,10 @@ class SavedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //*** delete lines
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
         var query = PFUser.query()
         
         query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -61,23 +64,34 @@ class SavedViewController: UITableViewController {
                         self.userids.append(user.objectId!)
                         
                     }
-                    
                 }
-                
             }
             
             println(self.usernames)
             println(self.userids)
             
+            for title in favorTitle {
+                 println(favorTitle)
+            }
+            
             self.tableView.reloadData()
             
         })
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+         //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+         //self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        
+        self.tableView.reloadData()
+        
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -95,16 +109,48 @@ class SavedViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return usernames.count
+        
+        //return favor.count
+        return favorTitle.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
-        cell.textLabel?.text = usernames[indexPath.row]
+        cell.textLabel?.numberOfLines = 3
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
+        cell.textLabel?.text = favorTitle[indexPath.row]
+        
+        cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
+        cell.detailTextLabel?.text = "@\(favorAuthor[indexPath.row])"
+        cell.detailTextLabel?.textColor = UIColor.grayColor()
+        
+        
+    
+        cell.imageView?.image = maskRoundedImage(favorImage[indexPath.row])
+        //println(indexPath.row)
         
         return cell
+    }
+    
+    func maskRoundedImage(image: UIImage) -> UIImage {
+        
+        let imageView = UIImageView(frame: CGRectMake(0, 0, 60, 70))
+        imageView.image = image
+        
+        var layer: CALayer = CALayer()
+        layer = imageView.layer
+        
+        layer.masksToBounds = true
+        layer.cornerRadius = CGFloat(30)
+        
+        UIGraphicsBeginImageContext(imageView.bounds.size)
+        layer.renderInContext(UIGraphicsGetCurrentContext())
+        var roundedImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return roundedImage
     }
 
 

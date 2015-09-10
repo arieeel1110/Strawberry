@@ -9,6 +9,10 @@
 import UIKit
 import MDCSwipeToChoose
 
+var favorTitle = [String]()
+var favorImage = [UIImage]()
+var favorAuthor = [String]()
+
 class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
     var people:[News] = []
@@ -17,6 +21,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     var currentPerson:News!
     var frontCardView:CardView!
     var backCardView:CardView!
+    
+    var menuContainer: UIView!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -46,7 +52,89 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         self.backCardView = self.popPersonViewWithFrame(backCardViewFrame())!
         self.view.insertSubview(self.backCardView, belowSubview: self.frontCardView)
         
+        addMenuContainer()
+        
     }
+    
+    func buttonAction(sender:UIButton!)
+    {
+        if sender.tag == 0 {
+            println("Button tapped")
+        }
+    }
+    
+    @IBAction func Category(sender: AnyObject) {
+        
+        menuContainer.hidden = !menuContainer.hidden
+    }
+    
+    
+    func addMenuContainer(){
+        
+        var frame:CGRect = CGRectMake(70,
+            170, view.bounds.width-120,view.bounds.height-320)
+        
+        
+        self.menuContainer=UIView(frame: frame)
+        self.menuContainer.hidden = true
+        self.menuContainer.layer.cornerRadius = 25
+        self.menuContainer.backgroundColor=UIColor.blackColor().colorWithAlphaComponent(0.1)
+        
+        
+        var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
+        
+        visualEffectView.frame = menuContainer.bounds
+        
+        visualEffectView.layer.cornerRadius = 15
+        visualEffectView.clipsToBounds = true
+        
+        menuContainer.addSubview(visualEffectView)
+        
+        addButton()
+        
+        self.view.insertSubview(self.menuContainer,aboveSubview: self.frontCardView )
+        
+    }
+    
+    func addButton(){
+        
+        let button   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        
+        var leftpadding = menuContainer.bounds.origin.x+30
+        var toppadding = menuContainer.bounds.origin.y+40
+        
+        button.frame = CGRectMake(leftpadding, toppadding, 50, 50)
+        
+        let image = UIImage(named: "star") as UIImage?
+        button.setImage(image, forState: .Normal)
+        //button.backgroundColor = UIColor.blackColor()
+        //button.setTitle("Test Button", forState: UIControlState.Normal)
+        
+        button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.tag=0
+        
+        menuContainer.addSubview(button)
+        
+        //*************
+        
+        let button2   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        
+        var leftpadding2 = menuContainer.bounds.origin.x+110
+        var toppadding2 = menuContainer.bounds.origin.y+40
+        
+        button2.frame = CGRectMake(leftpadding2, toppadding2, 50, 50)
+        
+        let image2 = UIImage(named: "star") as UIImage?
+        button2.setImage(image2, forState: .Normal)
+        
+        button2.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        button2.tag=1
+        
+        menuContainer.addSubview(button2)
+        
+    }
+    
+    
     func suportedInterfaceOrientations() -> UIInterfaceOrientationMask{
         return UIInterfaceOrientationMask.Portrait
     }
@@ -69,6 +157,10 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         else{
             
             println("You liked: \(self.currentPerson.Title)")
+            
+            favorTitle.append("\(self.currentPerson.Title)".lowercaseString)
+            favorImage.append(self.currentPerson.Image)
+            favorAuthor.append("\(self.currentPerson.Author)")
         }
         
         // MDCSwipeToChooseView removes the view from the view hierarchy

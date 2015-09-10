@@ -42,21 +42,21 @@ class LoginViewController: UIViewController {
         
         if signupActivie == true {
             
-            mainButton.setTitle("Log In", forState: UIControlState.Normal)
+            mainButton.setTitle("LOG IN", forState: UIControlState.Normal)
             
             indicationText.text = "Not registered?"
             
-            subButton.setTitle("Sign Up", forState: UIControlState.Normal)
+            subButton.setTitle("SIGN UP", forState: UIControlState.Normal)
             
             signupActivie = false
             
         } else {
             
-            mainButton.setTitle("Sign Up", forState: UIControlState.Normal)
+            mainButton.setTitle("SIGN UP", forState: UIControlState.Normal)
             
             indicationText.text = "Already registered?"
             
-            subButton.setTitle("Log In", forState: UIControlState.Normal)
+            subButton.setTitle("LOG IN", forState: UIControlState.Normal)
             
             signupActivie = true
             
@@ -80,7 +80,6 @@ class LoginViewController: UIViewController {
             var user = PFUser()
             user.username = username
             user.password = password
-            
             
             
             user.signUpInBackgroundWithBlock ({ (success, error) -> Void in
@@ -152,10 +151,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-//        
-//        if PFUser.currentUser() != nil {
-//            self.performSegueWithIdentifier("login", sender: self)
-//        }
+        if PFUser.currentUser() != nil {
+            self.performSegueWithIdentifier("login", sender: self)
+        }
         
     }
     
