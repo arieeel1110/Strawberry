@@ -36,7 +36,7 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
         
         picture.image = image
         
-        //>>> SAVE THE PORTRAIT
+        //SAVE THE PORTRAIT <<<
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }

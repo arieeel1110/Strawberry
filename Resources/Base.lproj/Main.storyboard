@@ -145,7 +145,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okN-lM-NyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="539.5" y="673.5"/>
+            <point key="canvasLocation" x="515.5" y="652.5"/>
         </scene>
         <!--Home-->
         <scene sceneID="vIB-zc-SO3">
@@ -156,11 +156,11 @@
                         <viewControllerLayoutGuide type="bottom" id="dmV-Jn-AQI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eEo-UF-j0l">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-cx-46B">
-                                <rect key="frame" x="98" y="287" width="104" height="106"/>
+                                <rect key="frame" x="111" y="334" width="104" height="106"/>
                                 <state key="normal" title="List" image="favourite">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -169,16 +169,22 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhO-SK-tlY">
-                                <rect key="frame" x="194" y="149" width="58" height="21"/>
+                                <rect key="frame" x="200" y="141" width="58" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.98039221759999995" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jake" translatesAutoresizingMaskIntoConstraints="NO" id="o5s-Y1-vnF">
                                 <rect key="frame" x="75" y="103" width="92" height="94"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click to change your portrait" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tg-5I-TPX">
+                                <rect key="frame" x="68" y="197" width="107" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="8"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0C-R0-yoS">
-                                <rect key="frame" x="75" y="103" width="92" height="97"/>
+                                <rect key="frame" x="94" y="159" width="92" height="97"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -186,14 +192,8 @@
                                     <action selector="uploadPic:" destination="GmP-J4-JLe" eventType="touchUpInside" id="agb-9T-zzl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click to change your portrait" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tg-5I-TPX">
-                                <rect key="frame" x="68" y="197" width="107" height="21"/>
-                                <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="8"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="8T2-Qy-Tvx"/>
                     <connections>
@@ -203,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOz-YT-tkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048.5" y="652.5"/>
+            <point key="canvasLocation" x="1048" y="652"/>
         </scene>
         <!--My Favorites-->
         <scene sceneID="AJ5-gA-ATL">
@@ -242,7 +242,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1495.5" y="666.5"/>
+            <point key="canvasLocation" x="1604.5" y="694.5"/>
         </scene>
         <!--World-->
         <scene sceneID="aJf-Ru-mog">
@@ -305,53 +305,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="upload" translatesAutoresizingMaskIntoConstraints="NO" id="KHD-Oc-nbG">
-                                <rect key="frame" x="78" y="259" width="128" height="150"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="upload2" translatesAutoresizingMaskIntoConstraints="NO" id="KHD-Oc-nbG">
+                                <rect key="frame" x="71" y="304" width="128" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Qhj-DD-5Hl"/>
                                     <constraint firstAttribute="width" constant="128" id="z6g-SW-EVW"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uc-FX-PL5">
-                                <rect key="frame" x="138" y="497" width="83" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click to change upload image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaO-nQ-yBa">
+                                <rect key="frame" x="78" y="454" width="143" height="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="10"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Share your tips or story" translatesAutoresizingMaskIntoConstraints="NO" id="0RK-ta-gYH">
+                                <rect key="frame" x="48" y="91" width="242" height="142"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uc-FX-PL5">
+                                <rect key="frame" x="235" y="416" width="83" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
                                 <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.87450987099999999" green="0.96078437569999997" blue="0.2078431547" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="submitButton:" destination="wKx-dT-CCX" eventType="touchUpInside" id="k7x-ud-3BD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="36b-zb-yb6">
-                                <rect key="frame" x="78" y="303" width="128" height="133"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niD-X9-RZq">
+                                <rect key="frame" x="78" y="311" width="115" height="143"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="uploadImgae:" destination="wKx-dT-CCX" eventType="touchUpInside" id="cuT-LG-NS8"/>
+                                    <action selector="uploadImage:" destination="wKx-dT-CCX" eventType="touchUpInside" id="eLa-kt-msX"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Share your tips or story ..." borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8c-wP-Jnr">
-                                <rect key="frame" x="58" y="116" width="227" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="rCN-R1-W1U"/>
-                                </constraints>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click to change upload image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaO-nQ-yBa">
-                                <rect key="frame" x="78" y="417" width="143" height="24"/>
-                                <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="10"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="preview" destination="KHD-Oc-nbG" id="tuo-iQ-yU9"/>
-                        <outlet property="text" destination="S8c-wP-Jnr" id="rJL-5o-HXH"/>
-                        <outlet property="upload" destination="36b-zb-yb6" id="Uq2-3Z-HOF"/>
+                        <outlet property="textView" destination="0RK-ta-gYH" id="ZeB-Sr-hav"/>
+                        <segue destination="SoP-hg-b7c" kind="show" identifier="PostAlertToWorld" id="axR-Nv-eEM"/>
+                        <segue destination="GmP-J4-JLe" kind="show" identifier="PostAlertToHome" id="db8-i4-Ess"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R0C-a5-17A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -387,6 +387,10 @@
         <image name="group" width="25" height="25"/>
         <image name="jake" width="280" height="368"/>
         <image name="pencil" width="256" height="256"/>
-        <image name="upload" width="256" height="256"/>
+        <image name="upload2" width="200" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="db8-i4-Ess"/>
+        <segue reference="axR-Nv-eEM"/>
+    </inferredMetricsTieBreakers>
 </document>

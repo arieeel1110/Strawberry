@@ -8,6 +8,7 @@
 
 import UIKit
 import MDCSwipeToChoose
+import Parse
 
 var favorTitle = [String]()
 var favorImage = [UIImage]()

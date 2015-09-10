@@ -9,9 +9,10 @@
 import UIKit
 import Parse
 
-class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate{
 
-    @IBOutlet weak var text: UITextField!
+    
+    @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var preview: UIImageView!
     @IBOutlet weak var upload: UIButton!
@@ -20,18 +21,22 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
                 
         // Do any additional setup after loading the view.
+        
+        textView.delegate = self
+        textView.layer.cornerRadius = 20;
+        
     }
     
-    
-    @IBAction func uploadImgae(sender: AnyObject) {
+    @IBAction func uploadImage(sender: AnyObject) {
         
         var imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         imagePicker.allowsEditing = false
         self.presentViewController(imagePicker, animated: true, completion: nil)
-
     }
+    
+   
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
 
@@ -39,11 +44,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
     
     @IBAction func submitButton(sender: AnyObject) {
         
-        var imageText = text.text
+        var imageText = textView.text
         
         if preview.image == nil {
             //image is not included alert user
@@ -70,7 +74,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                         if error == nil {
                             //take user home
                             println("data uploaded")
-                            //self.performSegueWithIdentifier("goHomeFromUpload", sender: self)
+                            
                             
                             let alertView = UIAlertView(
                                 title: "Congradulations!",
@@ -80,6 +84,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                 otherButtonTitles: "Go to Home"
                             )
                             alertView.show()
+                            
+                            self.performSegueWithIdentifier("PostAlertToWorld", sender: self)
+
                             
                         }else {
                             
@@ -98,6 +105,19 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             })
             
             
+        }
+        
+    }
+    
+    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int){
+        
+        switch buttonIndex{
+        case 0:
+            self.performSegueWithIdentifier("PostAlertToWorld", sender: self)
+        case 1:
+            self.performSegueWithIdentifier("PostAlertToHome", sender: self)
+        default:
+            self.performSegueWithIdentifier("PostAlertToHome", sender: self)
         }
         
     }
