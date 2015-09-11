@@ -23,7 +23,16 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
         // Do any additional setup after loading the view.
         name.text = PFUser.currentUser()?.username
         
-        picture.image = maskRoundedImage(picture.image!)
+        var imageFromParse = PFUser.currentUser()?.objectForKey("profilePicture") as? PFFile
+        imageFromParse!.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+            if imageData != nil {
+                var image: UIImage! = UIImage(data: imageData!)!
+                self.picture.image = image
+            } else {
+                self.picture.image = self.maskRoundedImage(self.picture.image!)
+            }
+        })
+        
     }
 
     @IBAction func uploadPic(sender: AnyObject) {
@@ -67,7 +76,7 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
             //create a parse file to store in cloud
             var parseImageFile = PFFile(name: "uploaded_image.png", data: imageData)
             
-            user["picture"] = parseImageFile
+            user["profilePicture"] = parseImageFile
             
             user.saveInBackgroundWithBlock({
                 (success: Bool, error: NSError?) -> Void in
