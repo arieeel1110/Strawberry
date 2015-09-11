@@ -11,6 +11,7 @@ import Parse
 
 class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var picture: UIImageView!
     
@@ -35,7 +36,7 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         
         picture.image = image
-        
+                
         //SAVE THE PORTRAIT <<<
         
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -60,8 +61,6 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
         
         return roundedImage
     }
-    
-    
     
     
     override func didReceiveMemoryWarning() {

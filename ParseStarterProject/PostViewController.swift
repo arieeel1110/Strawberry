@@ -104,7 +104,6 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 
             })
             
-            
         }
         
     }
