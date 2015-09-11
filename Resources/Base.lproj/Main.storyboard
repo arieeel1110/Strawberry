@@ -355,6 +355,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="postTitle" destination="nqi-Hc-NeV" id="lKc-uu-M27"/>
                         <outlet property="preview" destination="KHD-Oc-nbG" id="tuo-iQ-yU9"/>
                         <outlet property="textView" destination="0RK-ta-gYH" id="ZeB-Sr-hav"/>
                         <segue destination="SoP-hg-b7c" kind="show" identifier="PostAlertToWorld" id="axR-Nv-eEM"/>

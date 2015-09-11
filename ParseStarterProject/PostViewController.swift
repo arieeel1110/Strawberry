@@ -11,6 +11,7 @@ import Parse
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate{
 
+    @IBOutlet weak var postTitle: UITextField!
     
     @IBOutlet weak var textView: UITextView!
     
@@ -47,55 +48,38 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func submitButton(sender: AnyObject) {
         
-        var imageText = textView.text
-        
         if preview.image == nil {
             //image is not included alert user
             println("Image not uploaded")
         }else {
             
+            // get class model
             var posts = PFObject(className: "Post")
-            posts["imageText"] = imageText
+    
+            //create an image data
+            var imageData = UIImagePNGRepresentation(self.preview.image)
+            //create a parse file to store in cloud
+            var parseImageFile = PFFile(name: "uploaded_image.png", data: imageData)
+            
+            posts["imageText"] = textView.text
             posts["uploader"] = PFUser.currentUser()
+            posts["title"] = postTitle.text
+            posts["imageFile"] = parseImageFile
             posts.saveInBackgroundWithBlock({
                 (success: Bool, error: NSError?) -> Void in
                 
                 if error == nil {
                     /**success saving, Now save image.***/
+                    let alertView = UIAlertView(
+                        title: "Congradulations!",
+                        message: "Uploaded succesfully",
+                        delegate: nil,
+                        cancelButtonTitle: "back to Post page",
+                        otherButtonTitles: "Go to Home"
+                    )
+                    alertView.show()
                     
-                    //create an image data
-                    var imageData = UIImagePNGRepresentation(self.preview.image)
-                    //create a parse file to store in cloud
-                    var parseImageFile = PFFile(name: "uploaded_image.png", data: imageData)
-                    posts["imageFile"] = parseImageFile
-                    posts.saveInBackgroundWithBlock({
-                        (success: Bool, error: NSError?) -> Void in
-                        
-                        if error == nil {
-                            //take user home
-                            println("data uploaded")
-                            
-                            
-                            let alertView = UIAlertView(
-                                title: "Congradulations!",
-                                message: "Uploaded succesfully",
-                                delegate: nil,
-                                cancelButtonTitle: "back to Post page",
-                                otherButtonTitles: "Go to Home"
-                            )
-                            alertView.show()
-                            
-                            self.performSegueWithIdentifier("PostAlertToWorld", sender: self)
-
-                            
-                        }else {
-                            
-                            println(error)
-                        }
-                        
-                        
-                    })
-                    
+                    self.performSegueWithIdentifier("PostAlertToWorld", sender: self)
                     
                 }else {
                     println(error)
