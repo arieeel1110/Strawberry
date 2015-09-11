@@ -15,6 +15,8 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var picture: UIImageView!
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +44,50 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func uploadProfilePicture(sender: UIButton) {
+        
+        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
+        if picture.image == nil {
+            //image is not included alert user
+            println("Image not uploaded")
+        }else {
+            
+            // get class model
+            var user = PFUser.currentUser()!
+            
+            //create an image data
+            var imageData = UIImagePNGRepresentation(self.picture.image)
+            //create a parse file to store in cloud
+            var parseImageFile = PFFile(name: "uploaded_image.png", data: imageData)
+            
+            user["picture"] = parseImageFile
+            
+            user.saveInBackgroundWithBlock({
+                (success: Bool, error: NSError?) -> Void in
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                
+                if error == nil {
+                    /**success saving, Now save image.***/
+                    
+                }else {
+                    println(error)
+                    
+                }
+                
+            })
+            
+        }
+        
+    }
     
     func maskRoundedImage(image: UIImage) -> UIImage {
         
