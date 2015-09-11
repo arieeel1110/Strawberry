@@ -196,7 +196,55 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // It would be trivial to download these from a web service
         // as needed, but for the purposes of this sample app we'll
         // simply store them in memory.
-        return [News(name: "13 Ways of Staying Fit When There's No Time to Exercise".uppercaseString, image: UIImage(named: "finn"), author: "finn"), News(name: "11 Steps to Better Skin".uppercaseString, image: UIImage(named: "jake"), author: "jake"), News(name: "How Teens Can Stay Fit".uppercaseString, image: UIImage(named: "fiona"), author: "fiona"), News(name: "how to be cool".uppercaseString, image: UIImage(named: "prince"), author: "prince")]
+        
+        var cards:[News] = []
+        
+        var query = PFQuery(className: "Post")
+        query.findObjectsInBackgroundWithBlock{
+            ( objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if( error == nil){
+                
+                
+                    for object in objects! {
+                        
+                            //title
+                        var title = object.valueForKey("title") as! NSString
+
+                            //image
+                        var userImageFile = object.valueForKey("imageFile") as! PFFile
+                        var image: UIImage!
+                        
+                        userImageFile.getDataInBackgroundWithBlock {
+                            (imageData: NSData?, error: NSError?) -> Void in
+                            if error != nil {
+                                image = UIImage(data:imageData!)
+                            }
+                            else{
+                                println("error!!")
+                            }
+                        }
+                        
+                        //author
+                        let author = object.includeKey("uploader") as! PFUser
+                        var authorName = author.username as! NSString
+                        
+      
+                        //text
+                        var text = object.valueForKey("imageText") as! NSString
+                        
+                        
+                        cards.append(News(name: title,image: image, author: authorName,text:text))
+                                            }
+            }
+            else{
+                println("error")
+            }
+            
+    }
+        //return cards
+    
+        return [News(name: "13 Ways of Staying Fit When There's No Time to Exercise".uppercaseString, image: UIImage(named: "finn"), author: "finn",text:"a"), News(name: "11 Steps to Better Skin".uppercaseString, image: UIImage(named: "jake"), author: "jake",text:"a"), News(name: "How Teens Can Stay Fit".uppercaseString, image: UIImage(named: "fiona"), author: "fiona",text:"a"), News(name: "how to be cool".uppercaseString, image: UIImage(named: "prince"), author: "prince",text:"a")]
     }
     
     func popPersonViewWithFrame(frame:CGRect) -> CardView?{
@@ -226,12 +274,14 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         return personView
         
     }
+    
     func frontCardViewFrame() -> CGRect{
         var horizontalPadding:CGFloat = 0.1
         var topPadding:CGFloat = 60
         var bottomPadding:CGFloat = 100
         return CGRectMake(horizontalPadding,topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding * 2), CGRectGetHeight(self.view.frame) - bottomPadding)
     }
+    
     func backCardViewFrame() ->CGRect{
         var frontFrame:CGRect = frontCardViewFrame()
         return CGRectMake(frontFrame.origin.x, frontFrame.origin.y + 10.0, CGRectGetWidth(frontFrame), CGRectGetHeight(frontFrame))

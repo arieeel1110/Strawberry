@@ -24,14 +24,17 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
         name.text = PFUser.currentUser()?.username
         
         var imageFromParse = PFUser.currentUser()?.objectForKey("profilePicture") as? PFFile
-        imageFromParse!.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
-            if imageData != nil {
-                var image: UIImage! = UIImage(data: imageData!)!
-                self.picture.image = image
-            } else {
-                self.picture.image = self.maskRoundedImage(self.picture.image!)
-            }
-        })
+        if imageFromParse != nil {
+            imageFromParse!.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
+                if imageData != nil {
+                    var image: UIImage! = UIImage(data: imageData!)!
+                    self.picture.image = self.maskRoundedImage(image)
+                } else {
+                    self.picture.image = self.maskRoundedImage(self.picture.image!)
+                }
+            })
+        }
+        
         
     }
 
