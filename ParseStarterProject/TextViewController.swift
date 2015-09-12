@@ -12,11 +12,14 @@ class TextViewController: UIViewController {
 
     @IBOutlet weak var text: UITextView!
     
+    var passedValue:String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         text.layer.cornerRadius = 20;
-
+        
+        text.text = passedValue
         // Do any additional setup after loading the view.
     }
 

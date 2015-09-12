@@ -78,15 +78,30 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         frontCardView.addSubview(textButton)
     }
     
+    var valueToPass:String!
+    
     func buttonAction(sender:UIButton!)
     {
         if sender.tag == 100{
-             self.performSegueWithIdentifier("ViewText", sender: self)
+            valueToPass = self.currentPerson.Text as? String
+            self.performSegueWithIdentifier("ViewText", sender: self)
         }
         
         if sender.tag == 0 {
             println("Button tapped")
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "ViewText") {
+            
+            // initialize new view controller and cast it as your view controller
+            var viewController = segue.destinationViewController as! TextViewController
+            // your new view controller should have property that will store passed value
+            viewController.passedValue = valueToPass
+        }
+        
     }
     
     @IBAction func Category(sender: AnyObject) {
