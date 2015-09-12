@@ -13,14 +13,18 @@ class News: NSObject, Printable {
     let Title: NSString
     let Image: UIImage!
     let Author: NSString
+    let Text: NSString
+    let Picture: UIImage!
     
     override var description: String {
-        return "Name: \(Title), \n Image: \(Image), \n Author: \(Author) "
+        return "Title: \(Title), \n Image: \(Image), \n Author: \(Author) , \n Text: \(Text), \n Picture \(Picture)"
     }
     
-    init(name: NSString?, image: UIImage?, author: NSString?) {
+    init(name: NSString?, image: UIImage?, author: NSString?, text: NSString, pic: UIImage?) {
         self.Title = name ?? ""
         self.Image = image
         self.Author = author ?? ""
+        self.Text = text ?? ""
+        self.Picture = pic
     }
 }

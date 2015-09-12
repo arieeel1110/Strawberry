@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C2043" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -145,7 +145,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okN-lM-NyD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="539.5" y="673.5"/>
+            <point key="canvasLocation" x="515.5" y="652.5"/>
         </scene>
         <!--Home-->
         <scene sceneID="vIB-zc-SO3">
@@ -160,7 +160,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dsa-cx-46B">
-                                <rect key="frame" x="148" y="287" width="104" height="106"/>
+                                <rect key="frame" x="111" y="334" width="104" height="106"/>
                                 <state key="normal" title="List" image="favourite">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -168,24 +168,89 @@
                                     <segue destination="Xa8-XS-6PI" kind="show" id="iw1-qX-HiY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhO-SK-tlY">
+                                <rect key="frame" x="200" y="141" width="58" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.98039221759999995" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="jake" translatesAutoresizingMaskIntoConstraints="NO" id="o5s-Y1-vnF">
+                                <rect key="frame" x="75" y="103" width="92" height="94"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click to change your portrait" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tg-5I-TPX">
+                                <rect key="frame" x="68" y="197" width="107" height="21"/>
+                                <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="8"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0C-R0-yoS">
+                                <rect key="frame" x="94" y="159" width="92" height="97"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadPic:" destination="GmP-J4-JLe" eventType="touchUpInside" id="agb-9T-zzl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-5P-yOE">
+                                <rect key="frame" x="104" y="220" width="34" height="30"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadProfilePicture:" destination="GmP-J4-JLe" eventType="touchUpInside" id="d3B-x8-8gQ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="8T2-Qy-Tvx"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="name" destination="XhO-SK-tlY" id="cXE-wZ-HYn"/>
+                        <outlet property="picture" destination="o5s-Y1-vnF" id="kCi-z9-8s4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOz-YT-tkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048.5" y="652.5"/>
+            <point key="canvasLocation" x="1048" y="652"/>
+        </scene>
+        <!--Text View Controller-->
+        <scene sceneID="9TH-Gd-vdc">
+            <objects>
+                <viewController id="tLn-CF-MPr" customClass="TextViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Grz-6s-RZ2"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mlq-zZ-0fJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Icd-u9-2LY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMP-WP-Ilp">
+                                <rect key="frame" x="63" y="104" width="219" height="328"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="text" destination="gMP-WP-Ilp" id="WLb-Lb-LwB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IQ8-j7-xCi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="998.5" y="-1013.5"/>
         </scene>
         <!--My Favorites-->
         <scene sceneID="AJ5-gA-ATL">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cCT-XQ-sA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="VBE-PS-i2F">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
                 <tableViewController id="Xa8-XS-6PI" customClass="SavedViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wc7-r9-uaP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -213,8 +278,14 @@
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cCT-XQ-sA9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="VBE-PS-i2F">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </objects>
-            <point key="canvasLocation" x="1495.5" y="666.5"/>
+            <point key="canvasLocation" x="1604.5" y="694.5"/>
         </scene>
         <!--World-->
         <scene sceneID="aJf-Ru-mog">
@@ -248,17 +319,97 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="World" id="ege-Mj-fMa">
-                        <barButtonItem key="rightBarButtonItem" image="camera" id="VCV-DC-2JT">
+                        <barButtonItem key="leftBarButtonItem" title="Post" id="6gp-j2-yop">
+                            <connections>
+                                <segue destination="wKx-dT-CCX" kind="show" id="lp8-U4-d32"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Category" id="VCV-DC-2JT">
                             <connections>
                                 <action selector="Category:" destination="SoP-hg-b7c" id="rMl-YG-EeH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="tLn-CF-MPr" kind="show" identifier="ViewText" id="sYD-09-MRR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lqc-0p-r0j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1040.5" y="-163.5"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="ed9-Hg-qrK">
+            <objects>
+                <viewController id="wKx-dT-CCX" customClass="PostViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4VQ-mB-M60"/>
+                        <viewControllerLayoutGuide type="bottom" id="ugh-Wh-gYn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DWs-xH-Y64">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="upload2" translatesAutoresizingMaskIntoConstraints="NO" id="KHD-Oc-nbG">
+                                <rect key="frame" x="71" y="332" width="123" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="Qhj-DD-5Hl"/>
+                                    <constraint firstAttribute="width" constant="128" id="z6g-SW-EVW"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click to change upload image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaO-nQ-yBa">
+                                <rect key="frame" x="78" y="454" width="130" height="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-MediumOblique" family="Avenir" pointSize="9"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Share your tips or story" translatesAutoresizingMaskIntoConstraints="NO" id="0RK-ta-gYH">
+                                <rect key="frame" x="50" y="131" width="242" height="142"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Uc-FX-PL5">
+                                <rect key="frame" x="235" y="416" width="83" height="30"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.87450987099999999" green="0.96078437569999997" blue="0.2078431547" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButton:" destination="wKx-dT-CCX" eventType="touchUpInside" id="k7x-ud-3BD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niD-X9-RZq">
+                                <rect key="frame" x="78" y="361" width="121" height="93"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadImage:" destination="wKx-dT-CCX" eventType="touchUpInside" id="eLa-kt-msX"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Title" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqi-Hc-NeV">
+                                <rect key="frame" x="50" y="75" width="242" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="postTitle" destination="nqi-Hc-NeV" id="lKc-uu-M27"/>
+                        <outlet property="preview" destination="KHD-Oc-nbG" id="tuo-iQ-yU9"/>
+                        <outlet property="textView" destination="0RK-ta-gYH" id="ZeB-Sr-hav"/>
+                        <segue destination="SoP-hg-b7c" kind="show" identifier="PostAlertToWorld" id="axR-Nv-eEM"/>
+                        <segue destination="GmP-J4-JLe" kind="show" identifier="PostAlertToHome" id="db8-i4-Ess"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R0C-a5-17A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1595.5" y="-197.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="qlZ-3g-sd5">
@@ -285,9 +436,14 @@
     <resources>
         <image name="back" width="1000" height="1000"/>
         <image name="book" width="25" height="25"/>
-        <image name="camera" width="25" height="25"/>
         <image name="favourite" width="512" height="512"/>
         <image name="group" width="25" height="25"/>
+        <image name="jake" width="280" height="368"/>
         <image name="pencil" width="256" height="256"/>
+        <image name="upload2" width="200" height="200"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="otF-PC-dxb"/>
+        <segue reference="db8-i4-Ess"/>
+    </inferredMetricsTieBreakers>
 </document>

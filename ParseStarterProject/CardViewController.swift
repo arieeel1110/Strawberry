@@ -8,6 +8,7 @@
 
 import UIKit
 import MDCSwipeToChoose
+import Parse
 
 var favorTitle = [String]()
 var favorImage = [UIImage]()
@@ -21,6 +22,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     var currentPerson:News!
     var frontCardView:CardView!
     var backCardView:CardView!
+    var textButton:UIButton!
     
     var menuContainer: UIView!
     
@@ -41,6 +43,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     override func viewDidLoad(){
         super.viewDidLoad()
         
+        //self.people = defaultPeople()
+        
         // Display the first ChoosePersonView in front. Users can swipe to indicate
         // whether they like or dislike the person displayed.
         self.setFontCard(self.popPersonViewWithFrame(frontCardViewFrame())!)
@@ -56,17 +60,60 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         
     }
     
+    func buttonMoveToText() {
+        let textButton   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        
+        var bounds = UIScreen.mainScreen().bounds
+        var width = bounds.size.width
+        var height = bounds.size.height
+        
+        textButton.frame = CGRectMake(0, 0, width, height)
+        
+        //button.backgroundColor = UIColor.blackColor()
+        //button.setTitle("Test Button", forState: UIControlState.Normal)
+        
+        textButton.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        textButton.tag=100
+        
+        frontCardView.addSubview(textButton)
+    }
+    
+    var valueToPass:String!
+    
     func buttonAction(sender:UIButton!)
     {
+        if sender.tag == 100{
+            valueToPass = self.currentPerson.Text as? String
+            self.performSegueWithIdentifier("ViewText", sender: self)
+        }
+        
         if sender.tag == 0 {
             println("Button tapped")
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "ViewText") {
+            
+            // initialize new view controller and cast it as your view controller
+            var viewController = segue.destinationViewController as! TextViewController
+            // your new view controller should have property that will store passed value
+            viewController.passedValue = valueToPass
+        }
+        
+    }
+    
     @IBAction func Category(sender: AnyObject) {
         
         menuContainer.hidden = !menuContainer.hidden
+        //buttonFunction(textButton)
     }
+    
+//    func buttonFunction(sender:UIButton!)
+//    {
+//            textButton.enabled = !menuContainer.hidden
+//    }
     
     
     func addMenuContainer(){
@@ -189,15 +236,58 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // Quick and dirty, just for the purposes of this sample app.
         self.frontCardView = frontCardView
         self.currentPerson = frontCardView.person
+        buttonMoveToText()
     }
     
     func defaultPeople() -> [News]{
         // It would be trivial to download these from a web service
         // as needed, but for the purposes of this sample app we'll
         // simply store them in memory.
-        return [News(name: "13 Ways of Staying Fit When There's No Time to Exercise".uppercaseString, image: UIImage(named: "finn"), author: "finn"), News(name: "11 Steps to Better Skin".uppercaseString, image: UIImage(named: "jake"), author: "jake"), News(name: "How Teens Can Stay Fit".uppercaseString, image: UIImage(named: "fiona"), author: "fiona"), News(name: "how to be cool".uppercaseString, image: UIImage(named: "prince"), author: "prince")]
+        
+        var cards:[News] = []
+        
+        var query = PFQuery(className: "Post")
+        var objects = query.findObjects() as! [PFObject]
+                        
+                    for object in objects {
+                        
+                        //author
+                        let author = object.valueForKey("uploader") as! PFUser
+                        author.fetchIfNeeded()
+                        
+                        //authorName
+                        var authorName = author.username
+                        
+                            //title
+                        var title = object.valueForKey("title") as! NSString
+                        
+                            //image
+                        var userImageFile = object.valueForKey("imageFile") as? PFFile
+                        
+                        var image = UIImage(data: userImageFile!.getData()!)
+                        
+                        var picFile = author.valueForKey("profilePicture") as? PFFile
+                        
+                        var pic: UIImage
+                        
+                        if picFile != nil {
+                            pic = UIImage(data: picFile!.getData()!)!
+                        }
+                        else {
+                            pic = UIImage(named:"star")!
+                        }
+      
+                        //text
+                        var text = object.valueForKey("imageText") as! NSString
+                        
+                        
+                        cards.append(News(name: title,image: image, author: authorName, text:text, pic: pic))
+                }
+        
+            return cards
         
     }
+    
     func popPersonViewWithFrame(frame:CGRect) -> CardView?{
         if(self.people.count == 0){
             return nil;
@@ -225,12 +315,14 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         return personView
         
     }
+    
     func frontCardViewFrame() -> CGRect{
         var horizontalPadding:CGFloat = 0.1
         var topPadding:CGFloat = 60
         var bottomPadding:CGFloat = 100
         return CGRectMake(horizontalPadding,topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding * 2), CGRectGetHeight(self.view.frame) - bottomPadding)
     }
+    
     func backCardViewFrame() ->CGRect{
         var frontFrame:CGRect = frontCardViewFrame()
         return CGRectMake(frontFrame.origin.x, frontFrame.origin.y + 10.0, CGRectGetWidth(frontFrame), CGRectGetHeight(frontFrame))
