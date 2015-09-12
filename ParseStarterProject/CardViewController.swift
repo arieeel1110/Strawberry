@@ -238,6 +238,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
                         
                         //author
                         let author = object.valueForKey("uploader") as! PFUser
+                        author.fetchIfNeeded()
                         
                         //authorName
                         var authorName = author.username
