@@ -79,11 +79,18 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     }
     
     var valueToPass:String!
+    var picToPass:UIImage!
+    var authorToPass:String!
+    var titleToPass:String!
     
     func buttonAction(sender:UIButton!)
     {
         if sender.tag == 100{
             valueToPass = self.currentPerson.Text as? String
+            picToPass = self.currentPerson.Picture as UIImage
+            authorToPass = self.currentPerson.Author as String
+            titleToPass = self.currentPerson.Title as String
+            
             self.performSegueWithIdentifier("ViewText", sender: self)
         }
         
@@ -99,7 +106,10 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             // initialize new view controller and cast it as your view controller
             var viewController = segue.destinationViewController as! TextViewController
             // your new view controller should have property that will store passed value
-            viewController.passedValue = valueToPass
+            viewController.passedText = valueToPass
+            viewController.passedPic = picToPass
+            viewController.passedAuthor = authorToPass
+            viewController.passedTitle = titleToPass
         }
         
     }
