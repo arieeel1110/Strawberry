@@ -257,6 +257,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         var cards:[News] = []
         
         var query = PFQuery(className: "Post")
+        query.orderByDescending("createdAt")
         var objects = query.findObjects() as! [PFObject]
                         
                     for object in objects {
