@@ -16,10 +16,11 @@ var favorAuthor = [String]()
 
 class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
-    var people:[News] = []
+    var posts:[Post] = []
+//    var repeatObjects:[NSString] = []
     let ChoosePersonButtonHorizontalPadding:CGFloat = 80.0
     let ChoosePersonButtonVerticalPadding:CGFloat = 20.0
-    var currentPerson:News!
+    var currentPerson:Post!
     var frontCardView:CardView!
     var backCardView:CardView!
     var textButton:UIButton!
@@ -28,11 +29,11 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.people = defaultPeople()
+        self.posts = defaultPeople()
     }
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.people = defaultPeople()
+        self.posts = defaultPeople()
         // Here you can init your properties
     }
     
@@ -79,11 +80,18 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     }
     
     var valueToPass:String!
+    var picToPass:UIImage!
+    var authorToPass:String!
+    var titleToPass:String!
     
     func buttonAction(sender:UIButton!)
     {
         if sender.tag == 100{
             valueToPass = self.currentPerson.Text as? String
+            picToPass = self.currentPerson.Picture as UIImage
+            authorToPass = self.currentPerson.Author as String
+            titleToPass = self.currentPerson.Title as String
+            
             self.performSegueWithIdentifier("ViewText", sender: self)
         }
         
@@ -99,7 +107,10 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             // initialize new view controller and cast it as your view controller
             var viewController = segue.destinationViewController as! TextViewController
             // your new view controller should have property that will store passed value
-            viewController.passedValue = valueToPass
+            viewController.passedText = valueToPass
+            viewController.passedPic = picToPass
+            viewController.passedAuthor = authorToPass
+            viewController.passedTitle = titleToPass
         }
         
     }
@@ -200,6 +211,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // and "LIKED" on swipes to the right.
         if(wasChosenWithDirection == MDCSwipeDirection.Left){
             println("You noped: \(self.currentPerson.Title)")
+            
+            fetchMorePost()
         }
         else{
             
@@ -208,6 +221,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             favorTitle.append("\(self.currentPerson.Title)".lowercaseString)
             favorImage.append(self.currentPerson.Image)
             favorAuthor.append("\(self.currentPerson.Author)")
+            
+            fetchMorePost()
         }
         
         // MDCSwipeToChooseView removes the view from the view hierarchy
@@ -235,18 +250,25 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // Keep track of the person currently being chosen.
         // Quick and dirty, just for the purposes of this sample app.
         self.frontCardView = frontCardView
-        self.currentPerson = frontCardView.person
+        self.currentPerson = frontCardView.post
         buttonMoveToText()
     }
     
-    func defaultPeople() -> [News]{
+    func defaultPeople() -> [Post]{
+        
+        // get repeat objectId list
+//        self.repeatObjects = getRepeatObjects()
+        
         // It would be trivial to download these from a web service
         // as needed, but for the purposes of this sample app we'll
         // simply store them in memory.
         
-        var cards:[News] = []
+        var cards:[Post] = []
         
         var query = PFQuery(className: "Post")
+        query.orderByDescending("createdAt")
+//        query.whereKey("objectId", notContainedIn: self.repeatObjects)
+        query.limit = 3
         var objects = query.findObjects() as! [PFObject]
                         
                     for object in objects {
@@ -280,16 +302,67 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
                         //text
                         var text = object.valueForKey("imageText") as! NSString
                         
+//                        // mark it as repeat object
+//                        var objectId = object.valueForKey("objectId") as! NSString
+//                        self.repeatObjects.append(objectId)
+//                        saveRepeatObject(objectId)
                         
-                        cards.append(News(name: title,image: image, author: authorName, text:text, pic: pic))
+                        cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic))
                 }
         
             return cards
         
     }
     
+    func fetchMorePost() -> Void {
+        
+        var query = PFQuery(className: "Post")
+//        query.whereKey("objectId", notContainedIn: self.repeatObjects)
+        
+        var object = query.getFirstObject() as PFObject!
+        
+        if object != nil {
+            let author = object?.valueForKey("uploader") as! PFUser
+            author.fetchIfNeeded()
+            
+            //authorName
+            var authorName = author.username
+            
+            //title
+            var title = object?.valueForKey("title") as! NSString
+            
+            //image
+            var userImageFile = object?.valueForKey("imageFile") as? PFFile
+            
+            var image = UIImage(data: userImageFile!.getData()!)
+            
+            var picFile = author.valueForKey("profilePicture") as? PFFile
+            
+            var pic: UIImage
+            
+            if picFile != nil {
+                pic = UIImage(data: picFile!.getData()!)!
+            }
+            else {
+                pic = UIImage(named:"star")!
+            }
+            
+            //text
+            var text = object?.valueForKey("imageText") as! NSString
+            
+            var post = Post(name: title,image: image, author: authorName, text:text, pic: pic)
+            
+//            // mark it as repeat object
+//            var objectId = object?.valueForKey("objectId") as! NSString
+//            self.repeatObjects.append(objectId)
+//            self.saveRepeatObject(objectId)
+            
+            self.posts.append(post)
+        }
+    }
+    
     func popPersonViewWithFrame(frame:CGRect) -> CardView?{
-        if(self.people.count == 0){
+        if(self.posts.count == 0){
             return nil;
         }
         
@@ -310,11 +383,31 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // Create a personView with the top person in the people array, then pop
         // that person off the stack.
         
-        var personView:CardView = CardView(frame: frame, person: self.people[0], options: options)
-        self.people.removeAtIndex(0)
+        var personView:CardView = CardView(frame: frame, post: self.posts[0], options: options)
+        self.posts.removeAtIndex(0)
         return personView
         
     }
+    
+//    func saveRepeatObject(objectId: NSString) -> Void {
+//        let repeat = PFObject(className:"Repeat")
+//        repeat["objectId"] = objectId
+//        repeat.pinInBackground()
+//    }
+//    
+//    func getRepeatObjects() -> [NSString] {
+//        var repeatObjects:[NSString] = []
+//        var query = PFQuery(className:"Repeat")
+//        query.fromLocalDatastore()
+//        
+//        var objects = query.findObjects() as! [PFObject]
+//        for object in objects {
+//            let objectId = object["objectId"] as! NSString
+//            repeatObjects.append(objectId)
+//        }
+//        println(repeatObjects)
+//        return repeatObjects
+//    }
     
     func frontCardViewFrame() -> CGRect{
         var horizontalPadding:CGFloat = 0.1

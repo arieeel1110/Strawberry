@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import IQDropDownTextField
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate{
 
@@ -18,6 +19,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var preview: UIImageView!
     @IBOutlet weak var upload: UIButton!
     
+    @IBOutlet weak var occupationTextField: IQDropDownTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
                 
@@ -26,6 +29,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textView.delegate = self
         textView.layer.cornerRadius = 20;
         
+        occupationTextField.isOptionalDropDown = false
+        occupationTextField.itemList = ["weight", "muscle", "meal", "idol"]
     }
     
     @IBAction func uploadImage(sender: AnyObject) {
@@ -64,6 +69,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             posts["imageText"] = textView.text
             posts["uploader"] = PFUser.currentUser()
             posts["title"] = postTitle.text
+            posts["category"] = occupationTextField.text
             posts["imageFile"] = parseImageFile
             posts.saveInBackgroundWithBlock({
                 (success: Bool, error: NSError?) -> Void in

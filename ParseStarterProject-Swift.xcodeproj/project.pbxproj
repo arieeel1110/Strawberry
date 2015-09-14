@@ -11,7 +11,7 @@
 		3E3D58401B9BEA8C00926ED0 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D583F1B9BEA8C00926ED0 /* CardViewController.swift */; };
 		3E3D58461B9BF31300926ED0 /* ImageLabelVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D58451B9BF31300926ED0 /* ImageLabelVIew.swift */; };
 		3E3D58481B9BF3D100926ED0 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D58471B9BF3D100926ED0 /* CardView.swift */; };
-		3E3D584B1B9BF41C00926ED0 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D584A1B9BF41C00926ED0 /* News.swift */; };
+		3E3D584B1B9BF41C00926ED0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D584A1B9BF41C00926ED0 /* Post.swift */; };
 		3E7048DC1B804D60004665D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7048DB1B804D60004665D1 /* User.swift */; };
 		3E7048DF1B805B7E004665D1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7048DE1B805B7E004665D1 /* LoginViewController.swift */; };
 		3ED05A331B956B2700050E5F /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED05A321B956B2700050E5F /* SavedViewController.swift */; };
@@ -36,7 +36,7 @@
 		3E3D583F1B9BEA8C00926ED0 /* CardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
 		3E3D58451B9BF31300926ED0 /* ImageLabelVIew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLabelVIew.swift; sourceTree = "<group>"; };
 		3E3D58471B9BF3D100926ED0 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		3E3D584A1B9BF41C00926ED0 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		3E3D584A1B9BF41C00926ED0 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3E7048DB1B804D60004665D1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3E7048DE1B805B7E004665D1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3ED05A2C1B95673600050E5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				3E7048DB1B804D60004665D1 /* User.swift */,
-				3E3D584A1B9BF41C00926ED0 /* News.swift */,
+				3E3D584A1B9BF41C00926ED0 /* Post.swift */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 				8D59AEFD1BA305760034EF36 /* TextViewController.swift in Sources */,
 				3E3D58481B9BF3D100926ED0 /* CardView.swift in Sources */,
 				3E7048DF1B805B7E004665D1 /* LoginViewController.swift in Sources */,
-				3E3D584B1B9BF41C00926ED0 /* News.swift in Sources */,
+				3E3D584B1B9BF41C00926ED0 /* Post.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				8D59AEFB1BA127B30034EF36 /* PostViewController.swift in Sources */,
 				3ED05A331B956B2700050E5F /* SavedViewController.swift in Sources */,

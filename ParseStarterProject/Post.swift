@@ -8,7 +8,7 @@
 
 import UIKit
 
-class News: NSObject, Printable {
+class Post: NSObject, Printable {
     
     let Title: NSString
     let Image: UIImage!
