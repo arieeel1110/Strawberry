@@ -17,6 +17,7 @@ var favorAuthor = [String]()
 class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
     var posts:[Post] = []
+//    var repeatObjects:[NSString] = []
     let ChoosePersonButtonHorizontalPadding:CGFloat = 80.0
     let ChoosePersonButtonVerticalPadding:CGFloat = 20.0
     var currentPerson:Post!
@@ -254,6 +255,10 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     }
     
     func defaultPeople() -> [Post]{
+        
+        // get repeat objectId list
+//        self.repeatObjects = getRepeatObjects()
+        
         // It would be trivial to download these from a web service
         // as needed, but for the purposes of this sample app we'll
         // simply store them in memory.
@@ -262,6 +267,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         
         var query = PFQuery(className: "Post")
         query.orderByDescending("createdAt")
+//        query.whereKey("objectId", notContainedIn: self.repeatObjects)
         query.limit = 3
         var objects = query.findObjects() as! [PFObject]
                         
@@ -296,6 +302,10 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
                         //text
                         var text = object.valueForKey("imageText") as! NSString
                         
+//                        // mark it as repeat object
+//                        var objectId = object.valueForKey("objectId") as! NSString
+//                        self.repeatObjects.append(objectId)
+//                        saveRepeatObject(objectId)
                         
                         cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic))
                 }
@@ -306,59 +316,49 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
     func fetchMorePost() -> Void {
         
-        var cards:[Post] = []
-        
         var query = PFQuery(className: "Post")
+//        query.whereKey("objectId", notContainedIn: self.repeatObjects)
         
-        query.limit = 5
+        var object = query.getFirstObject() as PFObject!
         
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]?, error: NSError?) -> Void in
+        if object != nil {
+            let author = object?.valueForKey("uploader") as! PFUser
+            author.fetchIfNeeded()
             
-            if error == nil {
-                // The find succeeded.
-                println("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
-                if let objects = objects as? [PFObject] {
-                    for object in objects {
-                        //author
-                        let author = object.valueForKey("uploader") as! PFUser
-                        author.fetchIfNeeded()
-                        
-                        //authorName
-                        var authorName = author.username
-                        
-                        //title
-                        var title = object.valueForKey("title") as! NSString
-                        
-                        //image
-                        var userImageFile = object.valueForKey("imageFile") as? PFFile
-                        
-                        var image = UIImage(data: userImageFile!.getData()!)
-                        
-                        var picFile = author.valueForKey("profilePicture") as? PFFile
-                        
-                        var pic: UIImage
-                        
-                        if picFile != nil {
-                            pic = UIImage(data: picFile!.getData()!)!
-                        }
-                        else {
-                            pic = UIImage(named:"star")!
-                        }
-                        
-                        //text
-                        var text = object.valueForKey("imageText") as! NSString
-                        
-                        cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic))
-                    }
-                    self.posts += cards
-                }
-            } else {
-                println("Error: \(error!) \(error!.userInfo!)")
+            //authorName
+            var authorName = author.username
+            
+            //title
+            var title = object?.valueForKey("title") as! NSString
+            
+            //image
+            var userImageFile = object?.valueForKey("imageFile") as? PFFile
+            
+            var image = UIImage(data: userImageFile!.getData()!)
+            
+            var picFile = author.valueForKey("profilePicture") as? PFFile
+            
+            var pic: UIImage
+            
+            if picFile != nil {
+                pic = UIImage(data: picFile!.getData()!)!
             }
+            else {
+                pic = UIImage(named:"star")!
+            }
+            
+            //text
+            var text = object?.valueForKey("imageText") as! NSString
+            
+            var post = Post(name: title,image: image, author: authorName, text:text, pic: pic)
+            
+//            // mark it as repeat object
+//            var objectId = object?.valueForKey("objectId") as! NSString
+//            self.repeatObjects.append(objectId)
+//            self.saveRepeatObject(objectId)
+            
+            self.posts.append(post)
         }
-        
     }
     
     func popPersonViewWithFrame(frame:CGRect) -> CardView?{
@@ -388,6 +388,26 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         return personView
         
     }
+    
+//    func saveRepeatObject(objectId: NSString) -> Void {
+//        let repeat = PFObject(className:"Repeat")
+//        repeat["objectId"] = objectId
+//        repeat.pinInBackground()
+//    }
+//    
+//    func getRepeatObjects() -> [NSString] {
+//        var repeatObjects:[NSString] = []
+//        var query = PFQuery(className:"Repeat")
+//        query.fromLocalDatastore()
+//        
+//        var objects = query.findObjects() as! [PFObject]
+//        for object in objects {
+//            let objectId = object["objectId"] as! NSString
+//            repeatObjects.append(objectId)
+//        }
+//        println(repeatObjects)
+//        return repeatObjects
+//    }
     
     func frontCardViewFrame() -> CGRect{
         var horizontalPadding:CGFloat = 0.1
