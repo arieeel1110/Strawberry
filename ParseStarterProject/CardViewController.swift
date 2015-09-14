@@ -16,10 +16,10 @@ var favorAuthor = [String]()
 
 class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
-    var people:[News] = []
+    var posts:[Post] = []
     let ChoosePersonButtonHorizontalPadding:CGFloat = 80.0
     let ChoosePersonButtonVerticalPadding:CGFloat = 20.0
-    var currentPerson:News!
+    var currentPerson:Post!
     var frontCardView:CardView!
     var backCardView:CardView!
     var textButton:UIButton!
@@ -28,11 +28,11 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.people = defaultPeople()
+        self.posts = defaultPeople()
     }
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.people = defaultPeople()
+        self.posts = defaultPeople()
         // Here you can init your properties
     }
     
@@ -245,19 +245,20 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // Keep track of the person currently being chosen.
         // Quick and dirty, just for the purposes of this sample app.
         self.frontCardView = frontCardView
-        self.currentPerson = frontCardView.person
+        self.currentPerson = frontCardView.post
         buttonMoveToText()
     }
     
-    func defaultPeople() -> [News]{
+    func defaultPeople() -> [Post]{
         // It would be trivial to download these from a web service
         // as needed, but for the purposes of this sample app we'll
         // simply store them in memory.
         
-        var cards:[News] = []
+        var cards:[Post] = []
         
         var query = PFQuery(className: "Post")
         query.orderByDescending("createdAt")
+        query.limit = 3
         var objects = query.findObjects() as! [PFObject]
                         
                     for object in objects {
@@ -292,7 +293,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
                         var text = object.valueForKey("imageText") as! NSString
                         
                         
-                        cards.append(News(name: title,image: image, author: authorName, text:text, pic: pic))
+                        cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic))
                 }
         
             return cards
@@ -300,7 +301,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     }
     
     func popPersonViewWithFrame(frame:CGRect) -> CardView?{
-        if(self.people.count == 0){
+        if(self.posts.count == 0){
             return nil;
         }
         
@@ -321,8 +322,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // Create a personView with the top person in the people array, then pop
         // that person off the stack.
         
-        var personView:CardView = CardView(frame: frame, person: self.people[0], options: options)
-        self.people.removeAtIndex(0)
+        var personView:CardView = CardView(frame: frame, post: self.posts[0], options: options)
+        self.posts.removeAtIndex(0)
         return personView
         
     }

@@ -12,18 +12,18 @@ import MDCSwipeToChoose
 class CardView: MDCSwipeToChooseView {
     
     let ChoosePersonViewImageLabelWidth:CGFloat = 42.0;
-    var person: News!
+    var post: Post!
     var informationView: UIView!
     var nameLabel: UILabel!
     var authorLabel: UILabel!
     var carmeraImageLabelView:ImagelabelView!
     
-    init(frame: CGRect, person: News, options: MDCSwipeToChooseViewOptions) {
+    init(frame: CGRect, post: Post, options: MDCSwipeToChooseViewOptions) {
         
         super.init(frame: frame, options: options)
-        self.person = person
+        self.post = post
         
-        if let image = self.person.Image {
+        if let image = self.post.Image {
             self.imageView.image = image
         }
         
@@ -65,7 +65,7 @@ class CardView: MDCSwipeToChooseView {
         self.nameLabel = UILabel(frame:frame)
         self.nameLabel.numberOfLines = 4
         
-        self.nameLabel.text = "\(person.Title) "
+        self.nameLabel.text = "\(post.Title) "
         
         self.nameLabel.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(21))
         
@@ -84,7 +84,7 @@ class CardView: MDCSwipeToChooseView {
             floor(CGRectGetWidth(self.informationView.frame)/2+150.0),
             CGRectGetHeight(self.informationView.frame) + 50)
         self.authorLabel = UILabel(frame:frame)
-        self.authorLabel.text = "\(person.Author)"
+        self.authorLabel.text = "\(post.Author)"
         
         self.authorLabel.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(20))
         self.authorLabel.layer.shadowOpacity = 0.7
