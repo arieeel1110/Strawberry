@@ -210,6 +210,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // and "LIKED" on swipes to the right.
         if(wasChosenWithDirection == MDCSwipeDirection.Left){
             println("You noped: \(self.currentPerson.Title)")
+            
+            fetchMorePost()
         }
         else{
             
@@ -218,6 +220,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             favorTitle.append("\(self.currentPerson.Title)".lowercaseString)
             favorImage.append(self.currentPerson.Image)
             favorAuthor.append("\(self.currentPerson.Author)")
+            
+            fetchMorePost()
         }
         
         // MDCSwipeToChooseView removes the view from the view hierarchy
@@ -297,6 +301,63 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
                 }
         
             return cards
+        
+    }
+    
+    func fetchMorePost() -> Void {
+        
+        var cards:[Post] = []
+        
+        var query = PFQuery(className: "Post")
+        
+        query.limit = 5
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]?, error: NSError?) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                println("Successfully retrieved \(objects!.count) scores.")
+                // Do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        //author
+                        let author = object.valueForKey("uploader") as! PFUser
+                        author.fetchIfNeeded()
+                        
+                        //authorName
+                        var authorName = author.username
+                        
+                        //title
+                        var title = object.valueForKey("title") as! NSString
+                        
+                        //image
+                        var userImageFile = object.valueForKey("imageFile") as? PFFile
+                        
+                        var image = UIImage(data: userImageFile!.getData()!)
+                        
+                        var picFile = author.valueForKey("profilePicture") as? PFFile
+                        
+                        var pic: UIImage
+                        
+                        if picFile != nil {
+                            pic = UIImage(data: picFile!.getData()!)!
+                        }
+                        else {
+                            pic = UIImage(named:"star")!
+                        }
+                        
+                        //text
+                        var text = object.valueForKey("imageText") as! NSString
+                        
+                        cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic))
+                    }
+                    self.posts += cards
+                }
+            } else {
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
         
     }
     
