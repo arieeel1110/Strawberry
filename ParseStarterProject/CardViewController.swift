@@ -24,6 +24,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     var frontCardView:CardView!
     var backCardView:CardView!
     var textButton:UIButton!
+    var category:String! = "weight"
     
     var menuContainer: UIView!
     
@@ -44,8 +45,13 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        //self.people = defaultPeople()
+        setCards()
         
+        addMenuContainer()
+        
+    }
+    
+    func setCards() {
         // Display the first ChoosePersonView in front. Users can swipe to indicate
         // whether they like or dislike the person displayed.
         self.setFontCard(self.popPersonViewWithFrame(frontCardViewFrame())!)
@@ -56,9 +62,6 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // back views after each user swipe.
         self.backCardView = self.popPersonViewWithFrame(backCardViewFrame())!
         self.view.insertSubview(self.backCardView, belowSubview: self.frontCardView)
-        
-        addMenuContainer()
-        
     }
     
     func buttonMoveToText() {
@@ -95,10 +98,26 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             self.performSegueWithIdentifier("ViewText", sender: self)
         }
         
-        if sender.tag == 0 {
-            println("Button tapped")
+        if self.category != sender.titleLabel!.text {
+            self.category = sender.titleLabel!.text
+            
+            
+            if frontCardView != nil{
+                frontCardView.removeFromSuperview()
+            }
+            
+            if backCardView != nil {
+                backCardView.removeFromSuperview()
+            }
+            
+            menuContainer.hidden = true
+            posts = defaultPeople()
+            setCards()
+            addMenuContainer()
+
         }
     }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         
@@ -159,38 +178,88 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         let button   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         
         var leftpadding = menuContainer.bounds.origin.x+30
-        var toppadding = menuContainer.bounds.origin.y+40
+        var toppadding = menuContainer.bounds.origin.y + 60
         
         button.frame = CGRectMake(leftpadding, toppadding, 50, 50)
         
-        let image = UIImage(named: "star") as UIImage?
+        let image = UIImage(named: "scale") as UIImage?
+        let tintedImage = image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         button.setImage(image, forState: .Normal)
-        //button.backgroundColor = UIColor.blackColor()
-        //button.setTitle("Test Button", forState: UIControlState.Normal)
+        button.tintColor = UIColor.blackColor()
+        
+        button.setTitle("weight", forState: .Normal)
         
         button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         button.tag=0
         
         menuContainer.addSubview(button)
         
-        //*************
+        //************* 2
         
         let button2   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         
         var leftpadding2 = menuContainer.bounds.origin.x+110
-        var toppadding2 = menuContainer.bounds.origin.y+40
+        var toppadding2 = menuContainer.bounds.origin.y + 60
         
         button2.frame = CGRectMake(leftpadding2, toppadding2, 50, 50)
         
-        let image2 = UIImage(named: "star") as UIImage?
+        let image2 = UIImage(named: "muscle") as UIImage?
+        let tintedImage2 = image2?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         button2.setImage(image2, forState: .Normal)
+        button2.tintColor = UIColor.blackColor()
+
+
+        button2.setTitle("muscle", forState: .Normal)
         
         button2.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         button2.tag=1
         
         menuContainer.addSubview(button2)
         
-    }
+        //************* 3
+        
+        let button3   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        
+        var leftpadding3 = menuContainer.bounds.origin.x+30
+        var toppadding3 = menuContainer.bounds.origin.y + 150
+        
+        button3.frame = CGRectMake(leftpadding3, toppadding3, 50, 50)
+        
+        let image3 = UIImage(named: "meal") as UIImage?
+        let tintedImage3 = image3?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        button3.setImage(image3, forState: .Normal)
+        button3.tintColor = UIColor.blackColor()
+    
+        button3.setTitle("meal", forState: .Normal)
+
+        
+        button3.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        button3.tag=2
+        
+        menuContainer.addSubview(button3)
+        
+        //*********** 4
+        
+        let button4   = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        
+        var leftpadding4 = menuContainer.bounds.origin.x+110
+        var toppadding4 = menuContainer.bounds.origin.y+150
+        
+        button4.frame = CGRectMake(leftpadding4, toppadding4, 50, 50)
+        
+        let image4 = UIImage(named: "Bikini") as UIImage?
+        let tintedImage4 = image4?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        button4.setImage(image4, forState: .Normal)
+        button4.tintColor = UIColor.blackColor()
+        
+        button4.setTitle("idol", forState: .Normal)
+        
+        button4.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+        button4.tag=3
+        
+        menuContainer.addSubview(button4)
+        
+           }
     
     
     func suportedInterfaceOrientations() -> UIInterfaceOrientationMask{
@@ -269,9 +338,17 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         query.orderByDescending("createdAt")
 //        query.whereKey("objectId", notContainedIn: self.repeatObjects)
         query.limit = 3
+        query.whereKey("category", equalTo: self.category)
+
         var objects = query.findObjects() as! [PFObject]
-                        
+
                     for object in objects {
+                        
+//                        if cardCategoty != self.category {
+//                            continue
+//                        }
+                        
+                        println("added")
                         
                         //author
                         let author = object.valueForKey("uploader") as! PFUser
@@ -318,8 +395,12 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         
         var query = PFQuery(className: "Post")
         query.whereKey("objectId", notContainedIn: self.repeatObjects)
+        query.whereKey("category", equalTo: self.category)
         
         var object = query.getFirstObject() as PFObject!
+        
+        
+        //Get object in the category
         
         if object != nil {
             let author = object?.valueForKey("uploader") as! PFUser
@@ -362,6 +443,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     }
     
     func popPersonViewWithFrame(frame:CGRect) -> CardView?{
+        
         if(self.posts.count == 0){
             return nil;
         }
