@@ -17,7 +17,7 @@ var favorAuthor = [String]()
 class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
     var posts:[Post] = []
-//    var repeatObjects:[NSString] = []
+    var repeatObjects:[NSString] = []
     let ChoosePersonButtonHorizontalPadding:CGFloat = 80.0
     let ChoosePersonButtonVerticalPadding:CGFloat = 20.0
     var currentPerson:Post!
@@ -302,9 +302,9 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
                         //text
                         var text = object.valueForKey("imageText") as! NSString
                         
-//                        // mark it as repeat object
-//                        var objectId = object.valueForKey("objectId") as! NSString
-//                        self.repeatObjects.append(objectId)
+                        // mark it as repeat object
+                        var objectId = object.valueForKey("objectId") as! NSString
+                        self.repeatObjects.append(objectId)
 //                        saveRepeatObject(objectId)
                         
                         cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic))
@@ -317,7 +317,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     func fetchMorePost() -> Void {
         
         var query = PFQuery(className: "Post")
-//        query.whereKey("objectId", notContainedIn: self.repeatObjects)
+        query.whereKey("objectId", notContainedIn: self.repeatObjects)
         
         var object = query.getFirstObject() as PFObject!
         
@@ -352,9 +352,9 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             
             var post = Post(name: title,image: image, author: authorName, text:text, pic: pic)
             
-//            // mark it as repeat object
-//            var objectId = object?.valueForKey("objectId") as! NSString
-//            self.repeatObjects.append(objectId)
+            // mark it as repeat object
+            var objectId = object?.valueForKey("objectId") as! NSString
+            self.repeatObjects.append(objectId)
 //            self.saveRepeatObject(objectId)
             
             self.posts.append(post)
