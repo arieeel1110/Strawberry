@@ -54,21 +54,29 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     func setCards() {
         // Display the first ChoosePersonView in front. Users can swipe to indicate
         // whether they like or dislike the person displayed.
-
-        var newFrontCard = self.popPersonViewWithFrame(frontCardViewFrame()) as CardView!
-        if newFrontCard != nil {
+        
+        if posts.count != 0 {
+            var newFrontCard = self.popPersonViewWithFrame(frontCardViewFrame()) as CardView!
             self.setFontCard(newFrontCard)
             self.view.addSubview(self.frontCardView)
         }
-
+//        else{
+//            if frontCardView != nil {
+//                frontCardView.removeFromSuperview()
+//            }
+//        }
         
-        // Display the second ChoosePersonView in back. This view controller uses
-        // the MDCSwipeToChooseDelegate protocol methods to update the front and
-        // back views after each user swipe.
-        if backCardView != nil {
+        if posts.count != 0 {
             self.backCardView = self.popPersonViewWithFrame(backCardViewFrame())!
+            
             self.view.insertSubview(self.backCardView, belowSubview: self.frontCardView)
         }
+//        else{
+//            if backCardView != nil {
+//                backCardView.removeFromSuperview()
+//            }
+//        }
+       
     }
     
     func buttonMoveToText() {
@@ -118,7 +126,11 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             
             menuContainer.hidden = true
             posts = defaultPeople()
-            setCards()
+
+            if (posts.count != 0) {
+                 self.self.setCards()
+            }
+           
             addMenuContainer()
 
         }
