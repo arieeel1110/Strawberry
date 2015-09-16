@@ -60,8 +60,10 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         // Display the second ChoosePersonView in back. This view controller uses
         // the MDCSwipeToChooseDelegate protocol methods to update the front and
         // back views after each user swipe.
-        self.backCardView = self.popPersonViewWithFrame(backCardViewFrame())!
-        self.view.insertSubview(self.backCardView, belowSubview: self.frontCardView)
+        if backCardView != nil {
+            self.backCardView = self.popPersonViewWithFrame(backCardViewFrame())!
+            self.view.insertSubview(self.backCardView, belowSubview: self.frontCardView)
+        }
     }
     
     func buttonMoveToText() {
@@ -339,7 +341,6 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
 //        query.whereKey("objectId", notContainedIn: self.repeatObjects)
         query.limit = 3
         query.whereKey("category", equalTo: self.category)
-
         var objects = query.findObjects() as! [PFObject]
 
                     for object in objects {
