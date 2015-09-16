@@ -70,9 +70,9 @@ class SavedViewController: UITableViewController {
             println(self.usernames)
             println(self.userids)
             
-            for title in favorTitle {
-                 println(favorTitle)
-            }
+//            for title in favorTitle {
+//                 println(favorTitle)
+//            }
             
             self.tableView.reloadData()
             
@@ -110,23 +110,23 @@ class SavedViewController: UITableViewController {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         
-        //return favor.count
-        return favorTitle.count
+        return 0
+//        return favorTitle.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
-        cell.textLabel?.numberOfLines = 3
-        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
-        cell.textLabel?.text = favorTitle[indexPath.row]
-        
-        cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
-        cell.detailTextLabel?.text = "@\(favorAuthor[indexPath.row])"
-        cell.detailTextLabel?.textColor = UIColor.grayColor()
-    
-        cell.imageView?.image = maskRoundedImage(favorImage[indexPath.row])
+//        cell.textLabel?.numberOfLines = 3
+//        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
+//        cell.textLabel?.text = favorTitle[indexPath.row]
+//        
+//        cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
+//        cell.detailTextLabel?.text = "@\(favorAuthor[indexPath.row])"
+//        cell.detailTextLabel?.textColor = UIColor.grayColor()
+//    
+//        cell.imageView?.image = maskRoundedImage(favorImage[indexPath.row])
         //println(indexPath.row)
         
         return cell

@@ -10,6 +10,7 @@ import UIKit
 
 class Post: NSObject, Printable {
     
+    let objectId: NSString!
     let Title: NSString
     let Image: UIImage!
     let Author: NSString
@@ -20,11 +21,12 @@ class Post: NSObject, Printable {
         return "Title: \(Title), \n Image: \(Image), \n Author: \(Author) , \n Text: \(Text), \n Picture \(Picture)"
     }
     
-    init(name: NSString?, image: UIImage?, author: NSString?, text: NSString, pic: UIImage?) {
+    init(name: NSString?, image: UIImage?, author: NSString?, text: NSString, pic: UIImage?, objectId: NSString) {
         self.Title = name ?? ""
         self.Image = image
         self.Author = author ?? ""
         self.Text = text ?? ""
         self.Picture = pic
+        self.objectId = objectId
     }
 }

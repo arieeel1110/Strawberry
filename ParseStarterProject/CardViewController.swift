@@ -10,9 +10,9 @@ import UIKit
 import MDCSwipeToChoose
 import Parse
 
-var favorTitle = [String]()
-var favorImage = [UIImage]()
-var favorAuthor = [String]()
+//var favorTitle = [String]()
+//var favorImage = [UIImage]()
+//var favorAuthor = [String]()
 
 class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
@@ -303,11 +303,26 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         }
         else{
             
-            println("You liked: \(self.currentPerson.Title)")
+//            println("You liked: \(self.currentPerson.Title)")
             
-            favorTitle.append("\(self.currentPerson.Title)".lowercaseString)
-            favorImage.append(self.currentPerson.Image)
-            favorAuthor.append("\(self.currentPerson.Author)")
+//            favorTitle.append("\(self.currentPerson.Title)".lowercaseString)
+//            favorImage.append(self.currentPerson.Image)
+//            favorAuthor.append("\(self.currentPerson.Author)")
+            var query = PFQuery(className:"Post")
+            var currentObject = query.getObjectWithId(self.currentPerson.objectId as! String) as PFObject!
+            
+            var user = PFUser.currentUser()
+            var relation = user!.relationForKey("likes")
+            relation.addObject(currentObject)
+            user!.saveInBackgroundWithBlock {
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    println("like this post")
+                    println(relation.query()?.findObjects())
+                } else {
+                    // There was a problem, check error.description
+                }
+            }
             
             fetchMorePost()
         }
@@ -401,7 +416,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
                         self.repeatObjects.append(objectId)
 //                        saveRepeatObject(objectId)
                         
-                        cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic))
+                        cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId: objectId))
                 }
         
             return cards
@@ -448,12 +463,12 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             //text
             var text = object?.valueForKey("imageText") as! NSString
             
-            var post = Post(name: title,image: image, author: authorName, text:text, pic: pic)
-            
             // mark it as repeat object
             var objectId = object?.valueForKey("objectId") as! NSString
             self.repeatObjects.append(objectId)
 //            self.saveRepeatObject(objectId)
+            
+            var post = Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId:objectId )
             
             self.posts.append(post)
         }
