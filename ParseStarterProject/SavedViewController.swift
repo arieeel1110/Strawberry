@@ -16,6 +16,11 @@ class SavedViewController: UITableViewController {
     
     var favorPost = [PFObject]()
     
+    var valueToPass:String!
+    var picToPass:UIImage!
+    var authorToPass:String!
+    var titleToPass:String!
+    
     @IBAction func logout(sender: AnyObject) {
         //--------------------------------------
         // Option 1: Show a message asking the user to log out and log back in.
@@ -100,7 +105,6 @@ class SavedViewController: UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         
-        
         self.tableView.reloadData()
         
     }
@@ -134,17 +138,17 @@ class SavedViewController: UITableViewController {
         
         cell.textLabel?.numberOfLines = 3
         cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
-        cell.textLabel?.text = (favorPost[indexPath.row]).valueForKey("title") as! String
+        cell.textLabel?.text = (favorPost[indexPath.row]).valueForKey("title") as? String
         
         //author
         let author = (favorPost[indexPath.row]).valueForKey("uploader") as! PFUser
         author.fetchIfNeeded()
         
         //authorName
-        var authorName = author.username as String?
+        var authorName = author.username as String!
         
         cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
-        cell.detailTextLabel?.text = authorName
+        cell.detailTextLabel?.text = "@\(authorName)"
         cell.detailTextLabel?.textColor = UIColor.grayColor()
     
         var userImageFile = (favorPost[indexPath.row]).valueForKey("imageFile") as? PFFile
@@ -174,7 +178,67 @@ class SavedViewController: UITableViewController {
         
         return roundedImage
     }
+    
+    override func tableView(tableView: UITableView?, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath?) {
+        
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            
+            //var selectedQuoteFromFavourites:PFObject = self.favorPost[indexPath!.row] as PFObject
+            //selectedQuoteFromFavourites.deleteInBackground()
+            
+            var query = PFQuery(className:"Post")
+            var currentObject = self.favorPost[indexPath!.row] as PFObject
+            
+            var user = PFUser.currentUser()
+            var relation = user!.relationForKey("likes")
+            relation.removeObject(currentObject)
+            
+            user!.saveInBackground()
+            
+            self.favorPost.removeAtIndex(indexPath!.row)
+            self.tableView.reloadData()
+            
+        }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //CODE TO BE RUN ON CELL TOUCH
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let row = indexPath.row
+        
+        var currentPerson = self.favorPost[row] as PFObject
+        
+        self.valueToPass = currentPerson.valueForKey("imageText") as! String
+        
+        var author =  currentPerson.valueForKey("uploader") as! PFUser
+        
+        self.authorToPass = author.username
+        self.titleToPass = currentPerson.valueForKey("title") as! String
+        
+        var picFile = author.objectForKey("profilePicture") as? PFFile
+        
+        self.picToPass = UIImage(data: picFile!.getData()!)
+        
+        self.performSegueWithIdentifier("SaveToText", sender: self)
 
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
+        
+        if (segue.identifier == "SaveToText") {
+                        
+            // initialize new view controller and cast it as your view controller
+            var viewController = segue.destinationViewController as! TextViewController
+            // your new view controller should have property that will store passed value
+            viewController.passedText = valueToPass
+            viewController.passedPic = picToPass
+            viewController.passedAuthor = authorToPass
+            viewController.passedTitle = titleToPass
+        }
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

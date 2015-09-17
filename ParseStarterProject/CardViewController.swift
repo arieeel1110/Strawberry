@@ -319,7 +319,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
                     println("like this post")
-                    println(relation.query()?.findObjects())
+                    //println(relation.query()?.findObjects())
                 } else {
                     // There was a problem, check error.description
                 }
@@ -430,47 +430,52 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         query.whereKey("objectId", notContainedIn: self.repeatObjects)
         query.whereKey("category", equalTo: self.category)
         
-        var object = query.getFirstObject() as PFObject!
-        
-        //Get object in the category
-        
-        if object != nil {
-            let author = object?.valueForKey("uploader") as! PFUser
-            author.fetchIfNeeded()
+        query.getFirstObjectInBackgroundWithBlock {
+            (object: PFObject?, error: NSError?) -> Void in
             
-            //authorName
-            var authorName = author.username
-            
-            //title
-            var title = object?.valueForKey("title") as! NSString
-            
-            //image
-            var userImageFile = object?.valueForKey("imageFile") as? PFFile
-            
-            var image = UIImage(data: userImageFile!.getData()!)
-            
-            var picFile = author.valueForKey("profilePicture") as? PFFile
-            
-            var pic: UIImage
-            
-            if picFile != nil {
-                pic = UIImage(data: picFile!.getData()!)!
+            if error != nil && object != nil {
+                
+                let author = object?.valueForKey("uploader") as! PFUser
+                author.fetchIfNeeded()
+                
+                //authorName
+                var authorName = author.username
+                
+                //title
+                var title = object?.valueForKey("title") as! NSString
+                
+                //image
+                var userImageFile = object?.valueForKey("imageFile") as? PFFile
+                
+                var image = UIImage(data: userImageFile!.getData()!)
+                
+                var picFile = author.valueForKey("profilePicture") as? PFFile
+                
+                var pic: UIImage
+                
+                if picFile != nil {
+                    pic = UIImage(data: picFile!.getData()!)!
+                }
+                else {
+                    pic = UIImage(named:"star")!
+                }
+                
+                //text
+                var text = object?.valueForKey("imageText") as! NSString
+                
+                // mark it as repeat object
+                var objectId = object?.valueForKey("objectId") as! NSString
+                self.repeatObjects.append(objectId)
+                //            self.saveRepeatObject(objectId)
+                
+                var post = Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId:objectId )
+                
+                self.posts.append(post)
+
+            } else {
+                // The find succeeded.
+                println("error")
             }
-            else {
-                pic = UIImage(named:"star")!
-            }
-            
-            //text
-            var text = object?.valueForKey("imageText") as! NSString
-            
-            // mark it as repeat object
-            var objectId = object?.valueForKey("objectId") as! NSString
-            self.repeatObjects.append(objectId)
-//            self.saveRepeatObject(objectId)
-            
-            var post = Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId:objectId )
-            
-            self.posts.append(post)
         }
     }
     
