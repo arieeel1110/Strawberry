@@ -59,7 +59,8 @@ class SavedViewController: UITableViewController {
                 // There was an error
             } else {
                 // objects has all the Posts the current user liked.
-                
+                self.favorPost = objects as! [PFObject]
+                self.tableView.reloadData()
             }
         })
 //        query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
@@ -131,16 +132,26 @@ class SavedViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
-//        cell.textLabel?.numberOfLines = 3
-//        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
-//        cell.textLabel?.text = favorPost[indexPath.row][""]
-//        
-//        cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
-//        cell.detailTextLabel?.text = "@\(favorAuthor[indexPath.row])"
-//        cell.detailTextLabel?.textColor = UIColor.grayColor()
-//    
-//        cell.imageView?.image = maskRoundedImage(favorImage[indexPath.row])
-//        //println(indexPath.row)
+        cell.textLabel?.numberOfLines = 3
+        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
+        cell.textLabel?.text = (favorPost[indexPath.row]).valueForKey("title") as! String
+        
+        //author
+        let author = (favorPost[indexPath.row]).valueForKey("uploader") as! PFUser
+        author.fetchIfNeeded()
+        
+        //authorName
+        var authorName = author.username as String?
+        
+        cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
+        cell.detailTextLabel?.text = authorName
+        cell.detailTextLabel?.textColor = UIColor.grayColor()
+    
+        var userImageFile = (favorPost[indexPath.row]).valueForKey("imageFile") as? PFFile
+        var image = UIImage(data: userImageFile!.getData()!)
+        
+        cell.imageView?.image = maskRoundedImage(image!)
+        //println(indexPath.row)
         
         return cell
     }
