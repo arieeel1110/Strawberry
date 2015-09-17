@@ -14,6 +14,8 @@ class SavedViewController: UITableViewController {
     var usernames = [""]
     var userids = [""]
     
+    var favorPost = [PFObject]()
+    
     @IBAction func logout(sender: AnyObject) {
         //--------------------------------------
         // Option 1: Show a message asking the user to log out and log back in.
@@ -47,36 +49,47 @@ class SavedViewController: UITableViewController {
         //*** delete lines
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
         
-        var query = PFUser.query()
+//        var query = PFUser.query()
         
-        query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-            
-            if let users = objects {
+        var user = PFUser.currentUser()
+        var relation = user!.relationForKey("likes")
+        
+        relation.query()?.findObjectsInBackgroundWithBlock({(objects:[AnyObject]?, error:NSError?) -> Void in
+            if let error = error {
+                // There was an error
+            } else {
+                // objects has all the Posts the current user liked.
                 
-                self.usernames.removeAll(keepCapacity: true)
-                self.userids.removeAll(keepCapacity: true)
-                
-                for object in users {
-                    
-                    if let user = object as? PFUser {
-                        
-                        self.usernames.append(user.username!)
-                        self.userids.append(user.objectId!)
-                        
-                    }
-                }
             }
-            
-            println(self.usernames)
-            println(self.userids)
-            
-//            for title in favorTitle {
-//                 println(favorTitle)
-//            }
-            
-            self.tableView.reloadData()
-            
         })
+//        query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
+//            
+//            if let users = objects {
+//                
+//                self.usernames.removeAll(keepCapacity: true)
+//                self.userids.removeAll(keepCapacity: true)
+//                
+//                for object in users {
+//                    
+//                    if let user = object as? PFUser {
+//                        
+//                        self.usernames.append(user.username!)
+//                        self.userids.append(user.objectId!)
+//                        
+//                    }
+//                }
+//            }
+//            
+//            println(self.usernames)
+//            println(self.userids)
+//            
+////            for title in favorTitle {
+////                 println(favorTitle)
+////            }
+//            
+//            self.tableView.reloadData()
+//            
+//        })
         // Uncomment the following line to preserve selection between presentations
          //self.clearsSelectionOnViewWillAppear = false
 
@@ -110,8 +123,8 @@ class SavedViewController: UITableViewController {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         
-        return 0
-//        return favorTitle.count
+//        return 0
+        return favorPost.count
     }
 
     
@@ -120,14 +133,14 @@ class SavedViewController: UITableViewController {
         
 //        cell.textLabel?.numberOfLines = 3
 //        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
-//        cell.textLabel?.text = favorTitle[indexPath.row]
+//        cell.textLabel?.text = favorPost[indexPath.row][""]
 //        
 //        cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
 //        cell.detailTextLabel?.text = "@\(favorAuthor[indexPath.row])"
 //        cell.detailTextLabel?.textColor = UIColor.grayColor()
 //    
 //        cell.imageView?.image = maskRoundedImage(favorImage[indexPath.row])
-        //println(indexPath.row)
+//        //println(indexPath.row)
         
         return cell
     }
