@@ -233,7 +233,7 @@
                                 <rect key="frame" x="40" y="92" width="63" height="68"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hrE-dn-kdK">
-                                <rect key="frame" x="140" y="104" width="83" height="44"/>
+                                <rect key="frame" x="140" y="104" width="159" height="44"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -467,7 +467,7 @@
         <image name="group" width="25" height="25"/>
         <image name="jake" width="280" height="368"/>
         <image name="pencil" width="256" height="256"/>
-        <image name="upload2" width="200" height="200"/>
+        <image name="upload2" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="axR-Nv-eEM"/>

@@ -112,27 +112,28 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             
             self.performSegueWithIdentifier("ViewText", sender: self)
         }
-        
-        if self.category != sender.titleLabel!.text {
-            self.category = sender.titleLabel!.text
-            
-            if frontCardView != nil{
-                frontCardView.removeFromSuperview()
+        else{
+            if self.category != sender.titleLabel!.text {
+                self.category = sender.titleLabel!.text
+                
+                if frontCardView != nil{
+                    frontCardView.removeFromSuperview()
+                }
+                
+                if backCardView != nil {
+                    backCardView.removeFromSuperview()
+                }
+                
+                menuContainer.hidden = true
+                posts = defaultPeople()
+                
+                if (posts.count != 0) {
+                    self.self.setCards()
+                }
+                
+                addMenuContainer()
+                
             }
-            
-            if backCardView != nil {
-                backCardView.removeFromSuperview()
-            }
-            
-            menuContainer.hidden = true
-            posts = defaultPeople()
-
-            if (posts.count != 0) {
-                 self.self.setCards()
-            }
-           
-            addMenuContainer()
-
         }
     }
 
@@ -430,7 +431,6 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         query.whereKey("category", equalTo: self.category)
         
         var object = query.getFirstObject() as PFObject!
-        
         
         //Get object in the category
         
