@@ -211,6 +211,19 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
         button.tag=0
         
+        // the space between the image and text
+//        var spacing: CGFloat  = 6.0
+//        
+//        // lower the text and push it left so it appears centered
+//        //  below the image
+//        var imageSize = button.imageView!.frame.size as CGSize
+//        button.titleEdgeInsets = UIEdgeInsetsMake(0.0, -imageSize.width, -(imageSize.height + spacing), 0.0);
+//        
+//        // raise the image and push it right so it appears centered
+//        //  above the text
+//        var titleSize = button.titleLabel!.frame.size as CGSize
+//        button.imageEdgeInsets = UIEdgeInsetsMake(-(titleSize.height + spacing), 0.0, 0.0, -titleSize.width);
+        
         menuContainer.addSubview(button)
         
         //************* 2

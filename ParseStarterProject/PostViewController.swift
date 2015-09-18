@@ -12,6 +12,8 @@ import IQDropDownTextField
 
 class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate{
 
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    
     @IBOutlet weak var postTitle: UITextField!
     
     @IBOutlet weak var textView: UITextView!
@@ -25,6 +27,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
                 
         // Do any additional setup after loading the view.
+        
+        loading.hidden = true
         
         textView.delegate = self
         textView.layer.cornerRadius = 20;
@@ -53,6 +57,9 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func submitButton(sender: AnyObject) {
         
+        loading.hidden = false
+        loading.startAnimating()
+        
         if preview.image == nil {
             //image is not included alert user
             println("Image not uploaded")
@@ -76,6 +83,10 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 
                 if error == nil {
                     /**success saving, Now save image.***/
+                    
+                    self.loading.stopAnimating()
+                    self.loading.hidden = true
+                    
                     let alertView = UIAlertView(
                         title: "Congradulations!",
                         message: "Uploaded succesfully",

@@ -427,11 +427,15 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wwA-Sg-Ina">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="FvM-wD-aaS">
+                                <rect key="frame" x="162" y="249" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="loading" destination="FvM-wD-aaS" id="Ws8-It-X5o"/>
                         <outlet property="occupationTextField" destination="fh6-FS-J9v" id="Qde-JA-ZPn"/>
                         <outlet property="postTitle" destination="nqi-Hc-NeV" id="lKc-uu-M27"/>
                         <outlet property="preview" destination="KHD-Oc-nbG" id="tuo-iQ-yU9"/>
@@ -476,8 +480,8 @@
         <image name="upload" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MmS-D8-CvY"/>
-        <segue reference="Vq5-hw-nCS"/>
+        <segue reference="db8-i4-Ess"/>
         <segue reference="axR-Nv-eEM"/>
+        <segue reference="Vq5-hw-nCS"/>
     </inferredMetricsTieBreakers>
 </document>
