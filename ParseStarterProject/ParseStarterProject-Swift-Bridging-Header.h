@@ -14,5 +14,6 @@
 #import <UIKit/UIKit.h>
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 #import <IQDropDownTextField/IQDropDownTextField.h>
+#import "FXBlurView.h"
 
 #endif

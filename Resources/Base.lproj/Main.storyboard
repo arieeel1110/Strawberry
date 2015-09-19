@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C2043" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -203,6 +203,15 @@
                                     <action selector="uploadProfilePicture:" destination="GmP-J4-JLe" eventType="touchUpInside" id="d3B-x8-8gQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yj9-zU-vOz">
+                                <rect key="frame" x="164" y="275" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Lh2-Jt-3kr" kind="show" id="lWR-AP-fEE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -248,7 +257,7 @@
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMP-WP-Ilp">
                                 <rect key="frame" x="54" y="278" width="216" height="206"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="14"/>
@@ -469,6 +478,115 @@
             </objects>
             <point key="canvasLocation" x="-54.5" y="180.5"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="5hR-dp-voB">
+            <objects>
+                <viewController id="Lh2-Jt-3kr" customClass="ViewController" customModule="ParseStarterProject_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Iw8-IQ-U4l"/>
+                        <viewControllerLayoutGuide type="bottom" id="BUe-bq-aqP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BfR-bA-tcs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWo-la-AIL" userLabel="Header">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="107"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jane Stormtrooper" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W33-D0-L2S">
+                                        <rect key="frame" x="226" y="104" width="148" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="W33-D0-L2S" firstAttribute="top" secondItem="xWo-la-AIL" secondAttribute="top" constant="104" id="NX6-G5-Pwb"/>
+                                    <constraint firstAttribute="height" constant="107" id="ZND-iO-k4n"/>
+                                    <constraint firstAttribute="centerX" secondItem="W33-D0-L2S" secondAttribute="centerX" id="uJ9-b8-dxp"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvF-qT-FhD" userLabel="Scrollview">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="YLh-ji-lUC" userLabel="AvatarImage" customClass="AvatarImageView" customModule="ParseStarterProject_Swift" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="79" width="69" height="69"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Jane Stormtrooper" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYf-AG-iyS">
+                                        <rect key="frame" x="8" y="156" width="224" height="22"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="18"/>
+                                        <color key="textColor" red="0.16078431369999999" green="0.1843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zif-HR-xws" userLabel="FollowButton" customClass="TWTButton" customModule="ParseStarterProject_Swift" customModuleProvider="target">
+                                        <rect key="frame" x="478" y="118" width="112" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Ma5-af-7ZX"/>
+                                            <constraint firstAttribute="width" constant="112" id="vPO-rL-puG"/>
+                                        </constraints>
+                                        <state key="normal" title="Follow">
+                                            <color key="titleColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="shamelessActionThatBringsYouToMyTwitterProfile" destination="Lh2-Jt-3kr" eventType="touchUpInside" id="31S-hy-ixb"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@bitwaker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w7t-Bh-NEz" userLabel="TwitterUsername">
+                                        <rect key="frame" x="8" y="177" width="128" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" red="0.40000000000000002" green="0.41960784309999999" blue="0.49803921569999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="love" translatesAutoresizingMaskIntoConstraints="NO" id="a9C-IN-JVh" userLabel="Love">
+                                        <rect key="frame" x="281" y="404" width="32" height="32"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oKE-UP-5pP" userLabel="Sizer">
+                                        <rect key="frame" x="0.0" y="477" width="600" height="286"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="286" id="R8f-vy-HUR"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oKE-UP-5pP" firstAttribute="leading" secondItem="vvF-qT-FhD" secondAttribute="leading" id="3vf-55-di0"/>
+                                    <constraint firstItem="oKE-UP-5pP" firstAttribute="top" secondItem="vvF-qT-FhD" secondAttribute="top" constant="477" id="3wO-Ws-Sn6"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zif-HR-xws" secondAttribute="trailing" constant="10" id="P5e-t8-KRk"/>
+                                    <constraint firstAttribute="centerX" secondItem="a9C-IN-JVh" secondAttribute="centerX" constant="3" id="c2W-Ks-VPT"/>
+                                    <constraint firstAttribute="trailing" secondItem="oKE-UP-5pP" secondAttribute="trailing" id="hEF-Kp-YE3"/>
+                                    <constraint firstItem="Zif-HR-xws" firstAttribute="top" secondItem="vvF-qT-FhD" secondAttribute="top" constant="118" id="lRs-eR-ila"/>
+                                    <constraint firstAttribute="bottom" secondItem="oKE-UP-5pP" secondAttribute="bottom" constant="37" id="rTB-6D-3v9"/>
+                                    <constraint firstItem="a9C-IN-JVh" firstAttribute="top" secondItem="vvF-qT-FhD" secondAttribute="top" constant="404" id="sLd-JH-sSE"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vvF-qT-FhD" firstAttribute="leading" secondItem="BfR-bA-tcs" secondAttribute="leading" id="4K4-f2-cRt"/>
+                            <constraint firstItem="BUe-bq-aqP" firstAttribute="top" secondItem="vvF-qT-FhD" secondAttribute="bottom" id="AmM-LL-GIf"/>
+                            <constraint firstItem="xWo-la-AIL" firstAttribute="leading" secondItem="BfR-bA-tcs" secondAttribute="leading" id="Gar-TX-7Ce"/>
+                            <constraint firstAttribute="width" secondItem="oKE-UP-5pP" secondAttribute="width" id="KrH-bw-fkJ"/>
+                            <constraint firstAttribute="trailing" secondItem="vvF-qT-FhD" secondAttribute="trailing" id="RYG-Ex-91A"/>
+                            <constraint firstAttribute="trailing" secondItem="xWo-la-AIL" secondAttribute="trailing" id="iCG-EC-Cvd"/>
+                            <constraint firstItem="xWo-la-AIL" firstAttribute="top" secondItem="Iw8-IQ-U4l" secondAttribute="bottom" constant="-20" id="k6t-yF-E0d"/>
+                            <constraint firstItem="vvF-qT-FhD" firstAttribute="top" secondItem="Iw8-IQ-U4l" secondAttribute="bottom" constant="-20" id="tgw-la-KJK"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
+                    <connections>
+                        <outlet property="avatarImage" destination="YLh-ji-lUC" id="hc0-rk-dxs"/>
+                        <outlet property="header" destination="xWo-la-AIL" id="Npn-Fu-a3a"/>
+                        <outlet property="headerLabel" destination="W33-D0-L2S" id="gvN-Ru-GG2"/>
+                        <outlet property="scrollView" destination="vvF-qT-FhD" id="9bR-t5-D7g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i3A-BO-uqn" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1035" y="1550"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back" width="1000" height="1000"/>
@@ -476,12 +594,14 @@
         <image name="favourite" width="512" height="512"/>
         <image name="group" width="25" height="25"/>
         <image name="jake" width="280" height="368"/>
+        <image name="love" width="32" height="32"/>
         <image name="pencil" width="256" height="256"/>
+        <image name="profile" width="175" height="175"/>
         <image name="upload" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="db8-i4-Ess"/>
+        <segue reference="sYD-09-MRR"/>
         <segue reference="axR-Nv-eEM"/>
-        <segue reference="Vq5-hw-nCS"/>
+        <segue reference="db8-i4-Ess"/>
     </inferredMetricsTieBreakers>
 </document>

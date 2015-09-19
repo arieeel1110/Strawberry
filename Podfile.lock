@@ -1,12 +1,15 @@
 PODS:
+  - CSStickyHeaderFlowLayout (0.2.9)
   - IQDropDownTextField (1.0.6)
   - MDCSwipeToChoose (0.2.3)
 
 DEPENDENCIES:
+  - CSStickyHeaderFlowLayout
   - IQDropDownTextField
   - MDCSwipeToChoose
 
 SPEC CHECKSUMS:
+  CSStickyHeaderFlowLayout: ece83dad3a1528af8b5a25bda3aa12536624ac65
   IQDropDownTextField: 361e4a4ea879c4ed0c15cbd89aceb5e60aa19d33
   MDCSwipeToChoose: 56239d98b4558c66e7c3c9069482befd26092270
 
