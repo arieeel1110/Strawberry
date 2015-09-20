@@ -14,10 +14,7 @@
 		3E3D584B1B9BF41C00926ED0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D584A1B9BF41C00926ED0 /* Post.swift */; };
 		3E7048DC1B804D60004665D1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7048DB1B804D60004665D1 /* User.swift */; };
 		3E7048DF1B805B7E004665D1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7048DE1B805B7E004665D1 /* LoginViewController.swift */; };
-		3E74D45A1BAD5DFA008E685E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E74D4591BAD5DFA008E685E /* ViewController.swift */; };
-		3E74D46A1BAD6129008E685E /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E74D4661BAD6129008E685E /* AvatarImageView.swift */; };
-		3E74D46B1BAD6129008E685E /* TWTButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E74D4671BAD6129008E685E /* TWTButton.swift */; };
-		3E74D46C1BAD6129008E685E /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E74D4691BAD6129008E685E /* FXBlurView.m */; };
+		3E74D46E1BAE98BA008E685E /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E74D46D1BAE98BA008E685E /* ProfileTableViewCell.swift */; };
 		3ED05A331B956B2700050E5F /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED05A321B956B2700050E5F /* SavedViewController.swift */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
@@ -43,11 +40,7 @@
 		3E3D584A1B9BF41C00926ED0 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3E7048DB1B804D60004665D1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3E7048DE1B805B7E004665D1 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		3E74D4591BAD5DFA008E685E /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		3E74D4661BAD6129008E685E /* AvatarImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
-		3E74D4671BAD6129008E685E /* TWTButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TWTButton.swift; sourceTree = "<group>"; };
-		3E74D4681BAD6129008E685E /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
-		3E74D4691BAD6129008E685E /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
+		3E74D46D1BAE98BA008E685E /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		3ED05A2C1B95673600050E5F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		3ED05A321B956B2700050E5F /* SavedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,6 +115,7 @@
 			children = (
 				3E3D58451B9BF31300926ED0 /* ImageLabelVIew.swift */,
 				3E3D58471B9BF3D100926ED0 /* CardView.swift */,
+				3E74D46D1BAE98BA008E685E /* ProfileTableViewCell.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -143,21 +137,9 @@
 			name = login;
 			sourceTree = "<group>";
 		};
-		3E74D45E1BAD60F0008E685E /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				3E74D4661BAD6129008E685E /* AvatarImageView.swift */,
-				3E74D4671BAD6129008E685E /* TWTButton.swift */,
-				3E74D4681BAD6129008E685E /* FXBlurView.h */,
-				3E74D4691BAD6129008E685E /* FXBlurView.m */,
-			);
-			name = Helpers;
-			sourceTree = "<group>";
-		};
 		3ED05A2F1B9569CF00050E5F /* save */ = {
 			isa = PBXGroup;
 			children = (
-				3E74D4591BAD5DFA008E685E /* ViewController.swift */,
 				3ED05A321B956B2700050E5F /* SavedViewController.swift */,
 				8DCE3A5A1BA06EDD00282847 /* FavouriteController.swift */,
 			);
@@ -196,7 +178,6 @@
 		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
 			isa = PBXGroup;
 			children = (
-				3E74D45E1BAD60F0008E685E /* Helpers */,
 				3E3D58421B9BF2C100926ED0 /* views */,
 				3E3D583E1B9BEA5C00926ED0 /* Feed */,
 				3ED05A2F1B9569CF00050E5F /* save */,
@@ -370,11 +351,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E74D45A1BAD5DFA008E685E /* ViewController.swift in Sources */,
 				8D59AEFD1BA305760034EF36 /* TextViewController.swift in Sources */,
-				3E74D46C1BAD6129008E685E /* FXBlurView.m in Sources */,
 				3E3D58481B9BF3D100926ED0 /* CardView.swift in Sources */,
-				3E74D46B1BAD6129008E685E /* TWTButton.swift in Sources */,
 				3E7048DF1B805B7E004665D1 /* LoginViewController.swift in Sources */,
 				3E3D584B1B9BF41C00926ED0 /* Post.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
@@ -382,9 +360,9 @@
 				3ED05A331B956B2700050E5F /* SavedViewController.swift in Sources */,
 				3E3D58461B9BF31300926ED0 /* ImageLabelVIew.swift in Sources */,
 				8DCE3A5B1BA06EDD00282847 /* FavouriteController.swift in Sources */,
+				3E74D46E1BAE98BA008E685E /* ProfileTableViewCell.swift in Sources */,
 				3E3D58401B9BEA8C00926ED0 /* CardViewController.swift in Sources */,
 				3E7048DC1B804D60004665D1 /* User.swift in Sources */,
-				3E74D46A1BAD6129008E685E /* AvatarImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

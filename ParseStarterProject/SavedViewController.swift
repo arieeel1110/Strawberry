@@ -68,34 +68,6 @@ class SavedViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         })
-//        query?.findObjectsInBackgroundWithBlock({ (objects, error) -> Void in
-//            
-//            if let users = objects {
-//                
-//                self.usernames.removeAll(keepCapacity: true)
-//                self.userids.removeAll(keepCapacity: true)
-//                
-//                for object in users {
-//                    
-//                    if let user = object as? PFUser {
-//                        
-//                        self.usernames.append(user.username!)
-//                        self.userids.append(user.objectId!)
-//                        
-//                    }
-//                }
-//            }
-//            
-//            println(self.usernames)
-//            println(self.userids)
-//            
-////            for title in favorTitle {
-////                 println(favorTitle)
-////            }
-//            
-//            self.tableView.reloadData()
-//            
-//        })
         // Uncomment the following line to preserve selection between presentations
          //self.clearsSelectionOnViewWillAppear = false
 
@@ -129,35 +101,53 @@ class SavedViewController: UITableViewController {
         // Return the number of rows in the section.
         
 //        return 0
-        return favorPost.count
+        return favorPost.count + 1
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         
-        cell.textLabel?.numberOfLines = 3
-        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
-        cell.textLabel?.text = (favorPost[indexPath.row]).valueForKey("title") as? String
+        if  indexPath.row == 0 {
+            println("This cell is")
+//            let cell = tableView.dequeueReusableCellWithIdentifier("custom", forIndexPath: indexPath) as! ProfileTableViewCell
+            let cell:ProfileTableViewCell =
+            tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
+            
+            let image = UIImage(named: "meal")
+            
+            cell.avator?.image = image
+
+            
+            cell.username.text = "shumin"
+
+            
+            return cell
+        } else {
         
-        //author
-        let author = (favorPost[indexPath.row]).valueForKey("uploader") as! PFUser
-        author.fetchIfNeeded()
-        
-        //authorName
-        var authorName = author.username as String!
-        
-        cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
-        cell.detailTextLabel?.text = "@\(authorName)"
-        cell.detailTextLabel?.textColor = UIColor.grayColor()
-    
-        var userImageFile = (favorPost[indexPath.row]).valueForKey("imageFile") as? PFFile
-        var image = UIImage(data: userImageFile!.getData()!)
-        
-        cell.imageView?.image = maskRoundedImage(image!)
-        //println(indexPath.row)
-        
-        return cell
+            let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
+            
+            cell.textLabel?.numberOfLines = 3
+            cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
+            cell.textLabel?.text = (favorPost[indexPath.row-1]).valueForKey("title") as? String
+            
+            //author
+            let author = (favorPost[indexPath.row-1]).valueForKey("uploader") as! PFUser
+            author.fetchIfNeeded()
+            
+            //authorName
+            var authorName = author.username as String!
+            
+            cell.detailTextLabel?.font = UIFont(name: "Avenir", size: CGFloat(12))
+            cell.detailTextLabel?.text = "@\(authorName)"
+            cell.detailTextLabel?.textColor = UIColor.grayColor()
+            
+            var userImageFile = (favorPost[indexPath.row-1]).valueForKey("imageFile") as? PFFile
+            var image = UIImage(data: userImageFile!.getData()!)
+            
+            cell.imageView?.image = maskRoundedImage(image!)
+            
+            return cell
+        }
     }
     
     func maskRoundedImage(image: UIImage) -> UIImage {
@@ -204,11 +194,12 @@ class SavedViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //CODE TO BE RUN ON CELL TOUCH
         
+        if indexPath.row != 0 {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let row = indexPath.row
         
-        var currentPerson = self.favorPost[row] as PFObject
+        var currentPerson = self.favorPost[row-1] as PFObject
         
         self.valueToPass = currentPerson.valueForKey("imageText") as! String
         
@@ -222,6 +213,7 @@ class SavedViewController: UITableViewController {
         self.picToPass = UIImage(data: picFile!.getData()!)
         
         self.performSegueWithIdentifier("SaveToText", sender: self)
+        }
 
     }
     
