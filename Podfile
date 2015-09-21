@@ -4,5 +4,3 @@ platform :ios, '8.0'
 
 pod 'MDCSwipeToChoose'
 pod 'IQDropDownTextField'
-pod 'CSStickyHeaderFlowLayout'
-pod 'BLKFlexibleHeightBar'

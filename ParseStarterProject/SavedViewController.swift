@@ -107,21 +107,21 @@ class SavedViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+
         if  indexPath.row == 0 {
-            println("This cell is")
-//            let cell = tableView.dequeueReusableCellWithIdentifier("custom", forIndexPath: indexPath) as! ProfileTableViewCell
-            let cell:ProfileTableViewCell =
+
+            let cell1:ProfileTableViewCell =
             tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
             
             let image = UIImage(named: "meal")
             
-            cell.avator?.image = image
+            cell1.avator?.image = image
 
             
-            cell.username.text = "shumin"
+            cell1.username.text = "shumin"
 
             
-            return cell
+            return cell1
         } else {
         
             let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
