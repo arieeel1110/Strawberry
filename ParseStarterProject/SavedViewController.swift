@@ -118,17 +118,9 @@ class SavedViewController: UITableViewController {
 
         if  (indexPath.row == 0) {
 
-          let cell1:ProfileTableViewCell =           tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
-            
-            let image = UIImage(named: "star")
-            
-            cell1.avator?.image = image
+          let profileCell:ProfileTableViewCell =           tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
 
-            
-            cell1.username.text = "shumin"
-
-            
-            return cell1
+            return profileCell
             
         }
         else {

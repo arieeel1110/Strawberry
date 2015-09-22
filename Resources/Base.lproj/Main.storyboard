@@ -183,15 +183,6 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0C-R0-yoS">
-                                <rect key="frame" x="94" y="159" width="92" height="97"/>
-                                <state key="normal">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="uploadPic:" destination="GmP-J4-JLe" eventType="touchUpInside" id="agb-9T-zzl"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-5P-yOE">
                                 <rect key="frame" x="104" y="220" width="34" height="30"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="15"/>
@@ -201,6 +192,15 @@
                                 </state>
                                 <connections>
                                     <action selector="uploadProfilePicture:" destination="GmP-J4-JLe" eventType="touchUpInside" id="d3B-x8-8gQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E0C-R0-yoS">
+                                <rect key="frame" x="75" y="103" width="92" height="97"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="uploadPic:" destination="GmP-J4-JLe" eventType="touchUpInside" id="agb-9T-zzl"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -288,10 +288,31 @@
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gs6-Sa-Cbr">
                                             <rect key="frame" x="161" y="84" width="128" height="35"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="AlNile-Bold" family="Al Nile" pointSize="17"/>
                                             <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAS-ws-U96">
+                                            <rect key="frame" x="55" y="56" width="72" height="72.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="5"/>
+                                            <state key="normal" title="button">
+                                                <color key="titleColor" red="0.99215692280000001" green="0.99215692280000001" blue="0.98039221759999995" alpha="1" colorSpace="deviceRGB"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="uploadPic:" destination="m5I-Y8-HCi" eventType="touchUpInside" id="NDK-dz-cOD"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2iG-va-u8s">
+                                            <rect key="frame" x="68" y="143" width="45" height="28"/>
+                                            <fontDescription key="fontDescription" name="AlNile-Bold" family="Al Nile" pointSize="10"/>
+                                            <state key="normal" title="Save">
+                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="saveUpload:" destination="m5I-Y8-HCi" eventType="touchUpInside" id="vh0-dZ-zJ1"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -614,8 +635,8 @@
         <image name="upload" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="db8-i4-Ess"/>
         <segue reference="axR-Nv-eEM"/>
+        <segue reference="db8-i4-Ess"/>
         <segue reference="Vq5-hw-nCS"/>
     </inferredMetricsTieBreakers>
 </document>
