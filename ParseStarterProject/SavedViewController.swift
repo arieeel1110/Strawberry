@@ -82,7 +82,6 @@ class SavedViewController: UITableViewController {
     }
     
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,27 +92,20 @@ class SavedViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 2
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         
-//        return 0
-        if (section == 0){
-            return 1
-        }
-        else{
-            return favorPost.count
-        }
+            return favorPost.count+1
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        if (indexPath.section==0){
+        if (indexPath.row==0){
             return 200
-            //Choose your custom row height
         }
         else{
             return 100
@@ -124,7 +116,7 @@ class SavedViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
 
-        if  (indexPath.section == 0) {
+        if  (indexPath.row == 0) {
 
           let cell1:ProfileTableViewCell =           tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
             
@@ -146,10 +138,10 @@ class SavedViewController: UITableViewController {
             
             cell.textLabel?.numberOfLines = 3
             cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
-            cell.textLabel?.text = (favorPost[indexPath.row]).valueForKey("title") as? String
+            cell.textLabel?.text = (favorPost[indexPath.row-1]).valueForKey("title") as? String
             
             //author
-            let author = (favorPost[indexPath.row]).valueForKey("uploader") as! PFUser
+            let author = (favorPost[indexPath.row-1]).valueForKey("uploader") as! PFUser
             author.fetchIfNeeded()
             
             //authorName
@@ -159,7 +151,7 @@ class SavedViewController: UITableViewController {
             cell.detailTextLabel?.text = "@\(authorName)"
             cell.detailTextLabel?.textColor = UIColor.grayColor()
             
-            var userImageFile = (favorPost[indexPath.row]).valueForKey("imageFile") as? PFFile
+            var userImageFile = (favorPost[indexPath.row-1]).valueForKey("imageFile") as? PFFile
             var image = UIImage(data: userImageFile!.getData()!)
             
             cell.imageView?.image = maskRoundedImage(image!)
