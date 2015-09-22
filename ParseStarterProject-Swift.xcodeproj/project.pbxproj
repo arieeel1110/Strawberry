@@ -115,7 +115,6 @@
 			children = (
 				3E3D58451B9BF31300926ED0 /* ImageLabelVIew.swift */,
 				3E3D58471B9BF3D100926ED0 /* CardView.swift */,
-				3E74D46D1BAE98BA008E685E /* ProfileTableViewCell.swift */,
 			);
 			name = views;
 			sourceTree = "<group>";
@@ -140,6 +139,7 @@
 		3ED05A2F1B9569CF00050E5F /* save */ = {
 			isa = PBXGroup;
 			children = (
+				3E74D46D1BAE98BA008E685E /* ProfileTableViewCell.swift */,
 				3ED05A321B956B2700050E5F /* SavedViewController.swift */,
 				8DCE3A5A1BA06EDD00282847 /* FavouriteController.swift */,
 			);

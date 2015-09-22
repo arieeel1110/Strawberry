@@ -17,6 +17,9 @@ class ProfileTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.backgroundColor = UIColor.blackColor()
+        //self.avator.image = UIImage(named: "star")
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
