@@ -40,6 +40,7 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
 
     @IBAction func uploadPic(sender: AnyObject) {
         
+        print("damn it")
         var imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary

@@ -24,6 +24,10 @@ class ProfileTableViewCell: UITableViewCell,UIImagePickerControllerDelegate, UIN
         
         username.text = PFUser.currentUser()?.username
         
+        // create circuler imageview
+        self.avator.layer.cornerRadius = self.avator.frame.size.width / 2;
+        self.avator.clipsToBounds = true;
+        
         var imageFromParse = PFUser.currentUser()?.objectForKey("profilePicture") as? PFFile
         if imageFromParse != nil {
             imageFromParse!.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
@@ -37,6 +41,7 @@ class ProfileTableViewCell: UITableViewCell,UIImagePickerControllerDelegate, UIN
         }
 
     }
+    
     
     @IBAction func uploadPic(sender: AnyObject) {
         

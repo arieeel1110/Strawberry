@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class SavedViewController: UITableViewController {
+class SavedViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var usernames = [""]
     var userids = [""]
@@ -20,6 +20,10 @@ class SavedViewController: UITableViewController {
     var picToPass:UIImage!
     var authorToPass:String!
     var titleToPass:String!
+    
+    var profileCell:ProfileTableViewCell!
+    
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBAction func logout(sender: AnyObject) {
         //--------------------------------------
@@ -46,6 +50,62 @@ class SavedViewController: UITableViewController {
 //        let logInViewController = PFLogInViewController()
 //        presentingViewController?.presentViewController(logInViewController, animated: true, completion: nil)
         
+    }
+    
+    @IBAction func uploadPic(sender: UIButton) {
+        
+        println("damn it")
+        
+        var imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        imagePicker.allowsEditing = false
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func saveUpload(sender: UIButton) {
+        println("haha it")
+        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
+        if profileCell.avator.image == nil {
+            //image is not included alert user
+            println("Image not uploaded")
+        }else {
+            
+            // get class model
+            var user = PFUser.currentUser()!
+            
+            //create an image data
+            var imageData = UIImagePNGRepresentation(self.profileCell.avator.image)
+            //create a parse file to store in cloud
+            var parseImageFile = PFFile(name: "uploaded_image.png", data: imageData)
+            
+            user["profilePicture"] = parseImageFile
+            
+            user.saveInBackgroundWithBlock({
+                (success: Bool, error: NSError?) -> Void in
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                
+                if error == nil {
+                    /**success saving, Now save image.***/
+                    
+                }else {
+                    println(error)
+                    
+                }
+                
+            })
+            
+        }
     }
     
     override func viewDidLoad() {
@@ -118,7 +178,7 @@ class SavedViewController: UITableViewController {
 
         if  (indexPath.row == 0) {
 
-          let profileCell:ProfileTableViewCell =           tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
+           profileCell =           tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
 
             return profileCell
             

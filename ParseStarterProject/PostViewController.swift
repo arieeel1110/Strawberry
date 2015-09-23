@@ -114,10 +114,13 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         switch buttonIndex{
         case 0:
             self.performSegueWithIdentifier("PostAlertToWorld", sender: self)
+            break;
         case 1:
             self.performSegueWithIdentifier("PostAlertToHome", sender: self)
+            break;
         default:
             self.performSegueWithIdentifier("PostAlertToHome", sender: self)
+            break;
         }
         
     }
