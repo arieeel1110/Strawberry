@@ -10,6 +10,7 @@ import UIKit
 import Parse
 
 class SavedViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 
     var usernames = [""]
     var userids = [""]
@@ -52,70 +53,12 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
         
     }
     
-    @IBAction func uploadPic(sender: UIButton) {
-        
-        println("damn it")
-        
-        var imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        imagePicker.allowsEditing = false
-        self.presentViewController(imagePicker, animated: true, completion: nil)
-        
-    }
-    
-    @IBAction func saveUpload(sender: UIButton) {
-        println("haha it")
-        activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.White
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-        
-        if profileCell.avator.image == nil {
-            //image is not included alert user
-            println("Image not uploaded")
-        }else {
-            
-            // get class model
-            var user = PFUser.currentUser()!
-            
-            //create an image data
-            var imageData = UIImagePNGRepresentation(self.profileCell.avator.image)
-            //create a parse file to store in cloud
-            var parseImageFile = PFFile(name: "uploaded_image.png", data: imageData)
-            
-            user["profilePicture"] = parseImageFile
-            
-            user.saveInBackgroundWithBlock({
-                (success: Bool, error: NSError?) -> Void in
-                
-                self.activityIndicator.stopAnimating()
-                UIApplication.sharedApplication().endIgnoringInteractionEvents()
-                
-                if error == nil {
-                    /**success saving, Now save image.***/
-                    
-                }else {
-                    println(error)
-                    
-                }
-                
-            })
-            
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //*** delete lines
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-//        var query = PFUser.query()
-        
+                
         var user = PFUser.currentUser()
         var relation = user!.relationForKey("likes")
         
@@ -159,16 +102,19 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         
-            return favorPost.count+1
+            return favorPost.count+2
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         if (indexPath.row==0){
-            return 200
+            return 230
+        }
+        else if (indexPath.row==1){
+            return 36
         }
         else{
-            return 100
+            return 70
         }
     }
 
@@ -183,6 +129,27 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
             return profileCell
             
         }
+        else if (indexPath.row == 1) {
+            
+            let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "favouriteCell")
+            
+            
+            cell.textLabel?.text = "MY FAVOURITES"
+            cell.imageView?.image = UIImage(named:"favourite")
+            
+            let size = CGSizeMake(28, 28)
+            
+            cell.imageView?.image! = imageResize(image:cell.imageView!.image!,sizeChange: size)
+
+            
+            cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
+            cell.selectionStyle = UITableViewCellSelectionStyle.None
+            cell.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1)
+            
+            return cell
+        }
+            
+            
         else {
         
             let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "favouriteCell")
@@ -190,10 +157,10 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
             
             cell.textLabel?.numberOfLines = 3
             cell.textLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(13))
-            cell.textLabel?.text = (favorPost[indexPath.row-1]).valueForKey("title") as? String
+            cell.textLabel?.text = (favorPost[indexPath.row-2]).valueForKey("title") as? String
             
             //author
-            let author = (favorPost[indexPath.row-1]).valueForKey("uploader") as! PFUser
+            let author = (favorPost[indexPath.row-2]).valueForKey("uploader") as! PFUser
             author.fetchIfNeeded()
             
             //authorName
@@ -203,7 +170,7 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
             cell.detailTextLabel?.text = "@\(authorName)"
             cell.detailTextLabel?.textColor = UIColor.grayColor()
             
-            var userImageFile = (favorPost[indexPath.row-1]).valueForKey("imageFile") as? PFFile
+            var userImageFile = (favorPost[indexPath.row-2]).valueForKey("imageFile") as? PFFile
             var image = UIImage(data: userImageFile!.getData()!)
             
             cell.imageView?.image = maskRoundedImage(image!)
@@ -214,14 +181,14 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
     
     func maskRoundedImage(image: UIImage) -> UIImage {
         
-        let imageView = UIImageView(frame: CGRectMake(0, 0, 50, 60))
+        let imageView = UIImageView(frame: CGRectMake(0, 0, 40, 40))
         imageView.image = image
         
         var layer: CALayer = CALayer()
         layer = imageView.layer
         
         layer.masksToBounds = true
-        layer.cornerRadius = CGFloat(25)
+        layer.cornerRadius = CGFloat(20)
         
         UIGraphicsBeginImageContext(imageView.bounds.size)
         layer.renderInContext(UIGraphicsGetCurrentContext())
@@ -231,15 +198,24 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
         return roundedImage
     }
     
+    func imageResize (#image:UIImage, sizeChange:CGSize)-> UIImage{
+        
+        let hasAlpha = true
+        let scale: CGFloat = 0.0 // Use scale factor of main screen
+        
+        UIGraphicsBeginImageContextWithOptions(sizeChange, !hasAlpha, scale)
+        image.drawInRect(CGRect(origin: CGPointZero, size: sizeChange))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        return scaledImage
+    }
+    
     override func tableView(tableView: UITableView?, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath?) {
         
         if (editingStyle == UITableViewCellEditingStyle.Delete) {
             
-            //var selectedQuoteFromFavourites:PFObject = self.favorPost[indexPath!.row] as PFObject
-            //selectedQuoteFromFavourites.deleteInBackground()
-            
             var query = PFQuery(className:"Post")
-            var currentObject = self.favorPost[indexPath!.row] as PFObject
+            var currentObject = self.favorPost[indexPath!.row - 2] as PFObject
             
             var user = PFUser.currentUser()
             var relation = user!.relationForKey("likes")
@@ -247,7 +223,7 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
             
             user!.saveInBackground()
             
-            self.favorPost.removeAtIndex(indexPath!.row)
+            self.favorPost.removeAtIndex(indexPath!.row-2)
             self.tableView.reloadData()
             
         }
@@ -256,12 +232,12 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         //CODE TO BE RUN ON CELL TOUCH
         
-        if indexPath.row != 0 {
+        if indexPath.row > 1 {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let row = indexPath.row
         
-        var currentPerson = self.favorPost[row-1] as PFObject
+        var currentPerson = self.favorPost[row-2] as PFObject
         
         self.valueToPass = currentPerson.valueForKey("imageText") as! String
         
@@ -276,7 +252,17 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
         
         self.performSegueWithIdentifier("SaveToText", sender: self)
         }
+            
+        else if indexPath == 0 {
+            println("well")
+            self.performSegueWithIdentifier("SaveToUpload", sender: self)
+        }
 
+    }
+    
+    @IBAction func unwindToMainViewController (sender: UIStoryboardSegue){
+        // bug? exit segue doesn't dismiss so we do it manually...
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
@@ -291,7 +277,7 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
             viewController.passedAuthor = authorToPass
             viewController.passedTitle = titleToPass
         }
-        
+     
     }
 
     /*

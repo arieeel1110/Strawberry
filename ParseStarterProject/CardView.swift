@@ -45,14 +45,12 @@ class CardView: MDCSwipeToChooseView {
             CGRectGetWidth(self.bounds),
             0);
         self.informationView = UIView(frame:bottomFrame)
-        self.informationView.clipsToBounds = true
+        //self.informationView.clipsToBounds = true
         self.informationView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin
         self.addSubview(self.informationView)
         constructTitleLabel()
         constructAuthorLabel()
         constructCameraImageLabelView()
-        //constructInterestsImageLabelView()
-        //constructFriendsImageLabelView()
     }
     
     func constructTitleLabel() -> Void{
@@ -100,9 +98,6 @@ class CardView: MDCSwipeToChooseView {
             width: 25,
             height:25)
         self.carmeraImageLabelView = ImagelabelView(frame:frame, image:image, text:self.authorLabel.text!)
-        //self.carmeraImageLabelView.autoresizingMask = UIViewAutoresizing.FlexibleLeftMargin
-
-        //self.carmeraImageLabelView = buildImageLabelViewLeftOf(CGRectGetWidth(self.informationView.bounds), image:image, text:person.NumberOfPhotos.stringValue)
         
         insertSubview(self.carmeraImageLabelView,aboveSubview:self.informationView)
     }

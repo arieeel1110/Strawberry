@@ -28,10 +28,11 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 
         // Do any additional setup after loading the view.
         
+        self.view.backgroundColor = UIColor(red: 0.97, green: 0.97,  blue: 0.97, alpha:1)
+        
         loading.hidden = true
         
         textView.delegate = self
-        textView.layer.cornerRadius = 20;
         
         occupationTextField.isOptionalDropDown = false
         occupationTextField.itemList = ["weight", "muscle", "meal", "idol"]

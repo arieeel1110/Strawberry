@@ -15,12 +15,33 @@ class ProfileTableViewCell: UITableViewCell,UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var avator: UIImageView!
     
+    @IBAction func clicked(sender: AnyObject) {
+        println("cool")
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        self.backgroundColor = UIColor.blackColor()
-        //self.avator.image = UIImage(named: "star")
+        //*** COLOR
+                
+        let gradientLayer = CAGradientLayer()
+       
+        var colorView = UIView(frame: CGRectMake(0, 0, 400, 230))
+
+        gradientLayer.frame = colorView.bounds
+        
+        var color1 = UIColor(red: 0.1, green: 0.35, blue: 0.7, alpha: 0.3).CGColor as CGColorRef
+        var color2 = UIColor(red: 0.1, green: 0.3, blue: 0.5, alpha: 0.8).CGColor as CGColorRef
+        
+        gradientLayer.colors = [color1, color2]
+        
+        gradientLayer.locations = [0.0, 1.0]
+        
+        colorView.layer.addSublayer(gradientLayer)
+        
+        self.contentView.insertSubview(colorView, belowSubview: avator)
+        
+        //*******
         
         username.text = PFUser.currentUser()?.username
         
@@ -28,43 +49,35 @@ class ProfileTableViewCell: UITableViewCell,UIImagePickerControllerDelegate, UIN
         self.avator.layer.cornerRadius = self.avator.frame.size.width / 2;
         self.avator.clipsToBounds = true;
         
+        var image: UIImage!
+        
         var imageFromParse = PFUser.currentUser()?.objectForKey("profilePicture") as? PFFile
         if imageFromParse != nil {
             imageFromParse!.getDataInBackgroundWithBlock({ (imageData: NSData?, error: NSError?) -> Void in
                 if imageData != nil {
-                    var image: UIImage! = UIImage(data: imageData!)!
+                    image = UIImage(data: imageData!)!
                     self.avator.image = self.maskRoundedImage(image)
                 } else {
                     self.avator.image = self.maskRoundedImage(self.avator.image!)
                 }
             })
         }
+        
+//        var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
+//        
+//        visualEffectView.frame = self.bounds
+//        
+//        visualEffectView.clipsToBounds = true
+//        
+//        var imageView = UIImageView(frame: CGRectMake(100, 100, 200, 200))
+//        
+//        imageView.image = image
+//        self.backgroundView = UIView()
+//        self.backgroundView!.addSubview(imageView)
+//        self.backgroundView!.insertSubview(visualEffectView, aboveSubview: imageView)
 
     }
     
-    
-    @IBAction func uploadPic(sender: AnyObject) {
-        
-        
-//        var imagePicker = UIImagePickerController()
-//        imagePicker.delegate = self
-//        imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-//        imagePicker.allowsEditing = false
-//        self.presentViewController(imagePicker, animated: true, completion: nil)
-
-    }
-    
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-//        
-//        picture.image = image
-//        
-//        //SAVE THE PORTRAIT <<<
-//        
-//        self.dismissViewControllerAnimated(true, completion: nil)
-//    }
-    
-    @IBAction func saveUpload(sender: AnyObject) {
-    }
     
     func maskRoundedImage(image: UIImage) -> UIImage {
         

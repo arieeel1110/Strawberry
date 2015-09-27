@@ -14,7 +14,7 @@ import Parse
 //var favorImage = [UIImage]()
 //var favorAuthor = [String]()
 
-class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
+class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewControllerTransitioningDelegate {
     
     var posts:[Post] = []
     var repeatObjects:[NSString] = []
@@ -25,6 +25,9 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     var backCardView:CardView!
     var textButton:UIButton!
     var category:String! = "weight"
+    var darkBackground: UIView!
+    
+    let transitionManager = TransitionManager()
     
     var menuContainer: UIView!
     
@@ -42,13 +45,20 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         self.init()
     }
     
+    
     override func viewDidLoad(){
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.blackColor()
         
         setCards()
         
         addMenuContainer()
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     func setCards() {
@@ -140,6 +150,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
         
+        
         if (segue.identifier == "ViewText") {
             
             // initialize new view controller and cast it as your view controller
@@ -149,23 +160,33 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
             viewController.passedPic = picToPass
             viewController.passedAuthor = authorToPass
             viewController.passedTitle = titleToPass
+            
+            // instead of using the default transition animation, we'll ask
+            // the segue to use our custom TransitionManager object to manage the transition animation
+            //viewController.transitioningDelegate = self.transitionManager
+            //viewController.modalPresentationStyle = .Custom
+            
+            println("hehe")
+
         }
         
     }
     
+    
     @IBAction func Category(sender: AnyObject) {
         
-        menuContainer.hidden = !menuContainer.hidden
-        //buttonFunction(textButton)
+        self.menuContainer.hidden = !self.menuContainer.hidden
+        self.darkBackground.hidden = !self.darkBackground.hidden
+
     }
-    
-//    func buttonFunction(sender:UIButton!)
-//    {
-//            textButton.enabled = !menuContainer.hidden
-//    }
     
     
     func addMenuContainer(){
+        
+        self.darkBackground = UIView(frame:self.view.frame)
+        self.darkBackground.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        self.darkBackground.hidden = true
+        
         
         var frame:CGRect = CGRectMake(70,
             170, view.bounds.width-120,view.bounds.height-320)
@@ -174,8 +195,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         self.menuContainer=UIView(frame: frame)
         self.menuContainer.hidden = true
         self.menuContainer.layer.cornerRadius = 25
-        self.menuContainer.backgroundColor=UIColor.blackColor().colorWithAlphaComponent(0.1)
-        
+        self.menuContainer.backgroundColor=UIColor.whiteColor().colorWithAlphaComponent(0.1)
         
         var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
         
@@ -189,6 +209,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate {
         addButton()
         
         self.view.insertSubview(self.menuContainer,aboveSubview: self.frontCardView )
+        self.view.insertSubview(self.darkBackground,belowSubview: self.menuContainer )
         
     }
     

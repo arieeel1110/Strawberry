@@ -35,10 +35,10 @@ class ImagelabelView: UIView{
         
         let topPadding:CGFloat = 10.0
         
-        //let framex = CGRectMake(floor((CGRectGetWidth(self.bounds) - image.size.width)/2),
-            //topPadding,
-            //300,
-           // 400)
+//        let framex = CGRectMake(floor((CGRectGetWidth(self.bounds) - image.size.width)/2),
+//            topPadding,
+//            300,
+//            400)
         imageView = UIImageView(frame: frame)
         imageView.image = image
         addSubview(self.imageView)

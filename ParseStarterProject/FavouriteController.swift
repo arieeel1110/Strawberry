@@ -21,7 +21,14 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        name.text = PFUser.currentUser()?.username
+        
+        var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
+        
+        visualEffectView.frame = self.view.bounds
+        
+        visualEffectView.clipsToBounds = true
+        
+        //self.view.insertSubview(visualEffectView, belowSubview: picture)
         
         var imageFromParse = PFUser.currentUser()?.objectForKey("profilePicture") as? PFFile
         if imageFromParse != nil {
@@ -34,13 +41,15 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
                 }
             })
         }
+    }
+    
+    @IBAction func backCliked(sender: AnyObject) {
         
-        
+        self.performSegueWithIdentifier("UploadToSave", sender: self)
     }
 
     @IBAction func uploadPic(sender: AnyObject) {
         
-        print("damn it")
         var imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary

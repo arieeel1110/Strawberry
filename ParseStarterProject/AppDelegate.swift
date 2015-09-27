@@ -28,6 +28,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //--------------------------------------
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        var navigationBarAppearace = UINavigationBar.appearance()
+        
+        var attributes = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "Futura", size: 21)!
+        ]
+        
+        navigationBarAppearace.titleTextAttributes = attributes
+        navigationBarAppearace.tintColor = UIColor.whiteColor()
+        navigationBarAppearace.barTintColor = UIColor(red: 0, green: 0.35, blue: 0.7, alpha: 0.8)
+        
+        var tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.barTintColor = UIColor.blackColor()
+        tabBarAppearance.tintColor = UIColor.whiteColor()
+        
+        
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()

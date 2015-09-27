@@ -30,8 +30,7 @@ class TextViewController: UIViewController {
         text.text = passedText
         picture.image = maskRoundedImage(passedPic)
         author.text = passedAuthor
-        
-        
+    
         // Do any additional setup after loading the view.
     }
     
@@ -44,7 +43,7 @@ class TextViewController: UIViewController {
         layer = imageView.layer
         
         layer.masksToBounds = true
-        layer.cornerRadius = CGFloat(100)
+        layer.cornerRadius = CGFloat(27)
         
         UIGraphicsBeginImageContext(imageView.bounds.size)
         layer.renderInContext(UIGraphicsGetCurrentContext())

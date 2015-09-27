@@ -26,6 +26,8 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		8D058DF01B9DE96800ECE6D9 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D058DEF1B9DE96800ECE6D9 /* back.png */; };
+		8D554A301BB4199B00EB4FF4 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D554A2F1BB4199B00EB4FF4 /* TransitionManager.swift */; };
+		8D554A321BB4778800EB4FF4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D554A311BB4778800EB4FF4 /* NavigationController.swift */; };
 		8D59AEFB1BA127B30034EF36 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D59AEFA1BA127B30034EF36 /* PostViewController.swift */; };
 		8D59AEFD1BA305760034EF36 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D59AEFC1BA305760034EF36 /* TextViewController.swift */; };
 		8DCE3A5B1BA06EDD00282847 /* FavouriteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE3A5A1BA06EDD00282847 /* FavouriteController.swift */; };
@@ -58,6 +60,8 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81801A49E10C00E65899 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		8D058DEF1B9DE96800ECE6D9 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		8D554A2F1BB4199B00EB4FF4 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		8D554A311BB4778800EB4FF4 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		8D59AEFA1BA127B30034EF36 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		8D59AEFC1BA305760034EF36 /* TextViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		8DCE3A5A1BA06EDD00282847 /* FavouriteController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 		3E7048DA1B804D1E004665D1 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				8D554A2F1BB4199B00EB4FF4 /* TransitionManager.swift */,
 				3E7048DB1B804D60004665D1 /* User.swift */,
 				3E3D584A1B9BF41C00926ED0 /* Post.swift */,
 			);
@@ -186,6 +191,7 @@
 				3E7048DA1B804D1E004665D1 /* models */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				8D554A311BB4778800EB4FF4 /* NavigationController.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -354,7 +360,9 @@
 				8D59AEFD1BA305760034EF36 /* TextViewController.swift in Sources */,
 				3E3D58481B9BF3D100926ED0 /* CardView.swift in Sources */,
 				3E7048DF1B805B7E004665D1 /* LoginViewController.swift in Sources */,
+				8D554A301BB4199B00EB4FF4 /* TransitionManager.swift in Sources */,
 				3E3D584B1B9BF41C00926ED0 /* Post.swift in Sources */,
+				8D554A321BB4778800EB4FF4 /* NavigationController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				8D59AEFB1BA127B30034EF36 /* PostViewController.swift in Sources */,
 				3ED05A331B956B2700050E5F /* SavedViewController.swift in Sources */,
