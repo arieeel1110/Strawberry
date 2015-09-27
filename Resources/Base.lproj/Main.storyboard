@@ -297,18 +297,26 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m5I-Y8-HCi" id="77V-HB-D1X">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="q8c-Ot-VHb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="q8c-Ot-VHb">
                                             <rect key="frame" x="118" y="45" width="97" height="102"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="97" id="85f-uj-b9r"/>
+                                                <constraint firstAttribute="height" constant="102" id="LiI-cw-faX"/>
+                                            </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gs6-Sa-Cbr">
-                                            <rect key="frame" x="102" y="155" width="128" height="35"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gs6-Sa-Cbr">
+                                            <rect key="frame" x="68" y="155" width="217" height="35"/>
                                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="23"/>
                                             <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                             <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAS-ws-U96">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAS-ws-U96">
                                             <rect key="frame" x="130" y="59" width="72" height="72.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="72" id="0rK-hI-SMi"/>
+                                                <constraint firstAttribute="height" constant="72.5" id="q0z-cx-2GY"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal">
                                                 <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -320,6 +328,13 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="q8c-Ot-VHb" secondAttribute="centerX" id="ERA-T3-JxJ"/>
+                                        <constraint firstAttribute="centerX" secondItem="EAS-ws-U96" secondAttribute="centerX" id="IZL-Py-WhS"/>
+                                        <constraint firstAttribute="centerX" secondItem="Gs6-Sa-Cbr" secondAttribute="centerX" id="Pmw-vW-o7A"/>
+                                        <constraint firstItem="q8c-Ot-VHb" firstAttribute="top" secondItem="77V-HB-D1X" secondAttribute="topMargin" constant="37" id="axH-XF-r30"/>
+                                        <constraint firstItem="EAS-ws-U96" firstAttribute="top" secondItem="77V-HB-D1X" secondAttribute="topMargin" constant="51" id="do1-1I-Yz0"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="avator" destination="q8c-Ot-VHb" id="c74-PZ-BLd"/>
