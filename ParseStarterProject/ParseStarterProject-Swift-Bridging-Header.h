@@ -9,11 +9,11 @@
 #ifndef ParseStarterProject_Swift_ParseStarterProject_Swift_Bridging_Header_h
 #define ParseStarterProject_Swift_ParseStarterProject_Swift_Bridging_Header_h
 
-@import PureLayout;
+
 
 #import <UIKit/UIKit.h>
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 #import <IQDropDownTextField/IQDropDownTextField.h>
-@import BLKFlexibleHeightBar;
+
 
 #endif

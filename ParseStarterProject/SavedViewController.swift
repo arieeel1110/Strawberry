@@ -32,15 +32,15 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
         //--------------------------------------
         // If the user needs to finish what they were doing, they have the opportunity to do so.
         
-        let alertView = UIAlertView(
-            title: "Warning!",
-            message: "Are you sure you want to log out?",
-            delegate: nil,
-            cancelButtonTitle: "cancel",
-            otherButtonTitles: "Log Out"
-        )
-        alertView.show()
-        
+//        let alertView = UIAlertView(
+//            title: "Warning!",
+//            message: "Are you sure you want to log out?",
+//            delegate: nil,
+//            cancelButtonTitle: "cancel",
+//            otherButtonTitles: "Log Out"
+//        )
+//        alertView.show()
+        resetLoginView()
         
         //--------------------------------------
         // Option #2: Show login screen so user can re-authenticate.
@@ -278,6 +278,13 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
             viewController.passedTitle = titleToPass
         }
      
+    }
+    
+    func resetLoginView(){
+        PFUser.logOut()
+        if (PFUser.currentUser() == nil) {
+            self.navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
 
     /*
