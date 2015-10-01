@@ -33,9 +33,26 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         loading.hidden = true
         
         textView.delegate = self
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        textView.textColor = UIColor.lightGrayColor()
         
         occupationTextField.isOptionalDropDown = false
         occupationTextField.itemList = ["weight", "muscle", "meal", "idol"]
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.textColor == UIColor.lightGrayColor() {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Share your tips or story"
+            textView.textColor = UIColor.lightGrayColor()
+        }
     }
     
     @IBAction func uploadImage(sender: AnyObject) {
