@@ -30,8 +30,8 @@ class ProfileTableViewCell: UITableViewCell,UIImagePickerControllerDelegate, UIN
 
         gradientLayer.frame = colorView.bounds
         
-        var color1 = UIColor(red: 0.1, green: 0.35, blue: 0.7, alpha: 0.3).CGColor as CGColorRef
-        var color2 = UIColor(red: 0.1, green: 0.3, blue: 0.5, alpha: 0.8).CGColor as CGColorRef
+        var color1 = UIColor(red: 0.1, green: 0.5, blue: 0.5, alpha: 0.7).CGColor as CGColorRef
+        var color2 = UIColor(red: 0.1, green: 0.5, blue: 0.5, alpha: 0.7).CGColor as CGColorRef
         
         gradientLayer.colors = [color1, color2]
         
