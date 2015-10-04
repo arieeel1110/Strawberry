@@ -16,7 +16,6 @@ class CardView: MDCSwipeToChooseView {
     var informationView: UIView!
     var nameLabel: UILabel!
     var authorLabel: UILabel!
-    var likeLabel: UILabel!
     var carmeraImageLabelView:ImagelabelView!
     
     init(frame: CGRect, post: Post, options: MDCSwipeToChooseViewOptions) {
@@ -51,7 +50,6 @@ class CardView: MDCSwipeToChooseView {
         self.addSubview(self.informationView)
         constructTitleLabel()
         constructAuthorLabel()
-        constructLikesCount()
         constructCameraImageLabelView()
     }
     
@@ -75,25 +73,6 @@ class CardView: MDCSwipeToChooseView {
         insertSubview(self.nameLabel,aboveSubview:self.informationView)
     }
     
-    func constructLikesCount() -> Void {
-        var leftPadding:CGFloat = 10.0
-        var topPadding:CGFloat = self.informationView.frame.maxY - 80
-        
-        var frame:CGRect = CGRectMake(leftPadding,
-            topPadding,
-            floor(CGRectGetWidth(self.informationView.frame)/2+150.0),
-            CGRectGetHeight(self.informationView.frame) + 50)
-        
-        self.likeLabel = UILabel(frame: frame)
-        self.likeLabel.text = "\(post.Like)" + " likes"
-        
-        self.authorLabel.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(20))
-        self.likeLabel.layer.shadowOpacity = 0.7
-        self.likeLabel.textColor = UIColor.whiteColor()
-        
-        insertSubview(self.likeLabel, aboveSubview: self.informationView)
-    }
-    
     func constructAuthorLabel() -> Void{
         var leftPadding:CGFloat = 37.0;
         var topPadding:CGFloat = self.informationView.frame.maxY - 59
@@ -103,7 +82,7 @@ class CardView: MDCSwipeToChooseView {
             floor(CGRectGetWidth(self.informationView.frame)/2+150.0),
             CGRectGetHeight(self.informationView.frame) + 50)
         self.authorLabel = UILabel(frame:frame)
-        self.authorLabel.text = "\(post.Author)"
+        self.authorLabel.text = "\(post.Author)" + " , " + "\(post.Like)" + " likes"
         
         self.authorLabel.font = UIFont(name: "HelveticaNeue-Bold", size: CGFloat(20))
         self.authorLabel.layer.shadowOpacity = 0.7
