@@ -345,10 +345,13 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
 //            favorAuthor.append("\(self.currentPerson.Author)")
             var query = PFQuery(className:"Post")
             var currentObject = query.getObjectWithId(self.currentPerson.objectId as! String) as PFObject!
-            
+            currentObject.incrementKey("like_count")
+
             var user = PFUser.currentUser()
             var relation = user!.relationForKey("likes")
             relation.addObject(currentObject)
+            
+            currentObject.saveInBackground()
             user!.saveInBackgroundWithBlock {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
@@ -427,6 +430,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
                             //title
                         var title = object.valueForKey("title") as! NSString
                         
+                        var likes = object.valueForKey("like_count") as! NSNumber
+                        
                             //image
                         var userImageFile = object.valueForKey("imageFile") as? PFFile
                         
@@ -451,7 +456,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
                         self.repeatObjects.append(objectId)
 //                        saveRepeatObject(objectId)
                         
-                        cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId: objectId))
+                        cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId: objectId, likes: likes))
                 }
         
             return cards
@@ -478,6 +483,8 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
                 //title
                 var title = object?.valueForKey("title") as! NSString
                 
+                var likes = object?.valueForKey("like_count") as! NSNumber
+                
                 //image
                 var userImageFile = object?.valueForKey("imageFile") as? PFFile
                 
@@ -502,7 +509,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
                 self.repeatObjects.append(objectId)
                 //            self.saveRepeatObject(objectId)
                 
-                var post = Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId:objectId )
+                var post = Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId:objectId, likes: likes )
                 
                 self.posts.append(post)
 
