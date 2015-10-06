@@ -40,14 +40,7 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
     }
     
     override func viewDidAppear(animated: Bool) {
-<<<<<<< HEAD
-        
-        println("reload!!!!!!!!!!!!!!!!!!!!!")
-        self.tableView.reloadData()
-        
-=======
         refreshData()
->>>>>>> a2d14f16bf94cb0d3da8b0a51e35d798f9061519
     }
     
     
@@ -85,16 +78,8 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-<<<<<<< HEAD
-
-        if  (indexPath.row == 0) {
-
-           profileCell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
-
-=======
         if  (indexPath.row == 0) { // get current user data
             profileCell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
->>>>>>> a2d14f16bf94cb0d3da8b0a51e35d798f9061519
             return profileCell
         }
         else if (indexPath.row == 1) {  // set header cell
