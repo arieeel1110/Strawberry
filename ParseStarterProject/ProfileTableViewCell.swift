@@ -2,7 +2,7 @@
 //  ProfileTableViewCell.swift
 //  ParseStarterProject-Swift
 //
-//  Created by Shumin Gao on 9/20/15.
+//  Created by Shiyu Chen on 9/20/15.
 //  Copyright (c) 2015 Parse. All rights reserved.
 //
 
