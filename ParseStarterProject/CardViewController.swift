@@ -27,17 +27,22 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
     var category:String! = "weight"
     var darkBackground: UIView!
     
+    var favorPost: NSMutableSet!
+    
     let transitionManager = TransitionManager()
     
     var menuContainer: UIView!
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.favorPost = NSMutableSet()
         self.posts = defaultPeople()
     }
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.favorPost = NSMutableSet()
         self.posts = defaultPeople()
+        
         // Here you can init your properties
     }
     
@@ -208,8 +213,11 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
         
         addButton()
         
-        self.view.insertSubview(self.menuContainer,aboveSubview: self.frontCardView )
-        self.view.insertSubview(self.darkBackground,belowSubview: self.menuContainer )
+        if self.frontCardView != nil {
+            self.view.insertSubview(self.menuContainer,aboveSubview: self.frontCardView )
+            self.view.insertSubview(self.darkBackground,belowSubview: self.menuContainer )
+        }
+
         
     }
     
@@ -346,10 +354,11 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
             var query = PFQuery(className:"Post")
             var currentObject = query.getObjectWithId(self.currentPerson.objectId as! String) as PFObject!
             currentObject.incrementKey("like_count")
-
+            
             var user = PFUser.currentUser()
             var relation = user!.relationForKey("likes")
             relation.addObject(currentObject)
+            favorPost.addObject(currentObject)
             
             currentObject.saveInBackground()
             user!.saveInBackgroundWithBlock {
@@ -396,27 +405,38 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
     
     func defaultPeople() -> [Post]{
         
-        // get repeat objectId list
-//        self.repeatObjects = getRepeatObjects()
-        
         // It would be trivial to download these from a web service
         // as needed, but for the purposes of this sample app we'll
         // simply store them in memory.
+        
+        var user = PFUser.currentUser()
+        var relation = user!.relationForKey("likes")
+       
+        var favorobjects = relation.query()?.findObjects() as! [PFObject]
+        for favorobject in favorobjects {
+            self.favorPost.addObject(favorobject)
+        }
         
         var cards:[Post] = []
         
         var query = PFQuery(className: "Post")
         query.orderByDescending("createdAt")
+        
+        // get repeat objectId list
+//        self.repeatObjects = getRepeatObjects()
 //        query.whereKey("objectId", notContainedIn: self.repeatObjects)
+        
         query.limit = 3
         query.whereKey("category", equalTo: self.category)
         var objects = query.findObjects() as! [PFObject]
 
                     for object in objects {
                         
-//                        if cardCategoty != self.category {
-//                            continue
-//                        }
+                        if favorPost.count != 0 {
+                            if(favorPost.containsObject(object)){
+                                continue
+                            }
+                        }
                         
                         println("added")
                         
@@ -454,7 +474,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
                         // mark it as repeat object
                         var objectId = object.valueForKey("objectId") as! NSString
                         self.repeatObjects.append(objectId)
-//                        saveRepeatObject(objectId)
+                        
                         
                         cards.append(Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId: objectId, likes: likes))
                 }
@@ -465,14 +485,16 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
     
     func fetchMorePost() -> Void {
         
+        
+        
         var query = PFQuery(className: "Post")
-        query.whereKey("objectId", notContainedIn: self.repeatObjects)
         query.whereKey("category", equalTo: self.category)
+        
         
         query.getFirstObjectInBackgroundWithBlock {
             (object: PFObject?, error: NSError?) -> Void in
             
-            if error != nil && object != nil {
+            if error != nil && object != nil && !self.favorPost.containsObject(object!) {
                 
                 let author = object?.valueForKey("uploader") as! PFUser
                 author.fetchIfNeeded()
@@ -507,7 +529,6 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
                 // mark it as repeat object
                 var objectId = object?.valueForKey("objectId") as! NSString
                 self.repeatObjects.append(objectId)
-                //            self.saveRepeatObject(objectId)
                 
                 var post = Post(name: title,image: image, author: authorName, text:text, pic: pic, objectId:objectId, likes: likes )
                 

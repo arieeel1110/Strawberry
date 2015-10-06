@@ -80,6 +80,7 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
     
     override func viewDidAppear(animated: Bool) {
         
+        println("reload!!!!!!!!!!!!!!!!!!!!!")
         self.tableView.reloadData()
         
     }
@@ -124,7 +125,7 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
 
         if  (indexPath.row == 0) {
 
-           profileCell =           tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
+           profileCell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! ProfileTableViewCell
 
             return profileCell
             
