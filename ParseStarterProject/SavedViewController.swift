@@ -14,20 +14,14 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
     var usernames = [""]
     var userids = [""]
     
-    var favorPost = [PFObject]()
-    
     var valueToPass:String!
     var picToPass:UIImage!
     var authorToPass:String!
     var titleToPass:String!
     
+    var favorPost = [PFObject]()
     var profileCell:ProfileTableViewCell!
-    
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    
-    @IBAction func logout(sender: AnyObject) {
-        resetLoginView()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +37,10 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
         refreshData()
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
@@ -170,13 +161,18 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
         }
     }
     
+    @IBAction func logout(sender: AnyObject) {
+        logout()
+    }
+    
     @IBAction func unwindToMainViewController (sender: UIStoryboardSegue){
         // bug? exit segue doesn't dismiss so we do it manually...
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
-    // helper method
+    // ***************** helper methods *******************
+    
     
     // resize image
     func imageResize (#image:UIImage, sizeChange:CGSize)-> UIImage{
@@ -186,6 +182,19 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
         image.drawInRect(CGRect(origin: CGPointZero, size: sizeChange))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         return scaledImage
+    }
+    
+    // log out
+    func logout() {
+        let sheet = UIAlertController(title: NSLocalizedString("Are you sure you want to log out?", comment: ""), message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+        sheet.addAction(UIAlertAction(title: NSLocalizedString("Log Out", comment: ""), style: UIAlertActionStyle.Destructive, handler: { (_) -> Void in
+            PFUser.logOut()
+            if (PFUser.currentUser() == nil) {
+                self.navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }))
+        sheet.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: nil))
+        presentViewController(sheet, animated: true, completion: nil)
     }
     
     // create rounded image
@@ -217,15 +226,6 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
                 self.tableView.reloadData()
             }
         })
-    }
-    
-    
-    // log out
-    func resetLoginView(){
-        PFUser.logOut()
-        if (PFUser.currentUser() == nil) {
-            self.navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-        }
     }
 
 }
