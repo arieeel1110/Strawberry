@@ -96,6 +96,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             posts["title"] = postTitle.text
             posts["category"] = occupationTextField.text
             posts["imageFile"] = parseImageFile
+            posts["like_count"] = 0
             posts.saveInBackgroundWithBlock({
                 (success: Bool, error: NSError?) -> Void in
                 
