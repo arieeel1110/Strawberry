@@ -46,7 +46,7 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
     override func viewDidLoad(){
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.blackColor()
+        self.view.backgroundColor = UIColor.whiteColor()
         
         setCards()
         addMenuContainer()
@@ -305,6 +305,9 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
         if self.frontCardView != nil {
             self.view.insertSubview(self.menuContainer,aboveSubview: self.frontCardView )
             self.view.insertSubview(self.darkBackground,belowSubview: self.menuContainer )
+        }
+        else{
+            self.view.insertSubview(self.menuContainer,aboveSubview:self.view )
         }
     }
     
