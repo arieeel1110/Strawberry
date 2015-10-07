@@ -62,19 +62,6 @@ class ProfileTableViewCell: UITableViewCell,UIImagePickerControllerDelegate, UIN
                 }
             })
         }
-        
-//        var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
-//        
-//        visualEffectView.frame = self.bounds
-//        
-//        visualEffectView.clipsToBounds = true
-//        
-//        var imageView = UIImageView(frame: CGRectMake(100, 100, 200, 200))
-//        
-//        imageView.image = image
-//        self.backgroundView = UIView()
-//        self.backgroundView!.addSubview(imageView)
-//        self.backgroundView!.insertSubview(visualEffectView, aboveSubview: imageView)
 
     }
     

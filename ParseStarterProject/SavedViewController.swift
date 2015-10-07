@@ -141,7 +141,14 @@ class SavedViewController: UITableViewController, UIImagePickerControllerDelegat
             self.authorToPass = author.username
             self.titleToPass = currentPerson.valueForKey("title") as! String
             var picFile = author.objectForKey("profilePicture") as? PFFile
-            self.picToPass = UIImage(data: picFile!.getData()!)
+            
+            if(picFile != nil){
+                self.picToPass = UIImage(data: picFile!.getData()!)
+            }
+            else{
+                self.picToPass = UIImage(named:"star")
+            }
+            
             self.performSegueWithIdentifier("SaveToText", sender: self)
         }
         else if indexPath == 0 {

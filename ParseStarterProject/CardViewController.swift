@@ -52,10 +52,6 @@ class CardViewController: UIViewController,MDCSwipeToChooseDelegate,UIViewContro
         addMenuContainer()
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
     func setCards() {
         // Display the first ChoosePersonView in front. Users can swipe to indicate
         // whether they like or dislike the person displayed.
