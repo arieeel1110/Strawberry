@@ -266,7 +266,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
-                        <color key="backgroundColor" red="0.97647064924240112" green="0.98431378602981567" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="yf3-0y-PJO" firstAttribute="leading" secondItem="Icd-u9-2LY" secondAttribute="leadingMargin" constant="44" id="v9f-fD-OR0"/>
                         </constraints>
