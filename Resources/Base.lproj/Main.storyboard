@@ -404,7 +404,20 @@
                     <view key="view" contentMode="scaleToFill" id="1Ht-2C-i6S">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Screen Shot 2015-10-06 at 8.55.23 PM (1)" translatesAutoresizingMaskIntoConstraints="NO" id="TZq-eO-R26">
+                                <rect key="frame" x="0.0" y="70" width="330" height="447"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="447" id="OSL-ab-WOI"/>
+                                    <constraint firstAttribute="width" constant="330" id="Vjy-B8-pQe"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="TZq-eO-R26" secondAttribute="centerX" id="LwC-Cl-i51"/>
+                            <constraint firstAttribute="centerY" secondItem="TZq-eO-R26" secondAttribute="centerY" id="MWC-58-H3y"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="WORLD" id="ege-Mj-fMa">
                         <barButtonItem key="leftBarButtonItem" systemItem="compose" id="6gp-j2-yop">
@@ -568,6 +581,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Screen Shot 2015-10-06 at 8.55.23 PM (1)" width="696" height="961"/>
         <image name="back" width="1000" height="1000"/>
         <image name="book" width="25" height="25"/>
         <image name="favourite" width="512" height="512"/>
@@ -579,7 +593,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="axR-Nv-eEM"/>
+        <segue reference="sYD-09-MRR"/>
         <segue reference="Kvp-03-fA6"/>
-        <segue reference="Vq5-hw-nCS"/>
     </inferredMetricsTieBreakers>
 </document>
