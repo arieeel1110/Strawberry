@@ -42,11 +42,6 @@ class FavouriteController: UIViewController,UIImagePickerControllerDelegate, UIN
             })
         }
     }
-    
-    @IBAction func backCliked(sender: AnyObject) {
-        
-        self.performSegueWithIdentifier("UploadToSave", sender: self)
-    }
 
     @IBAction func uploadPic(sender: AnyObject) {
         
