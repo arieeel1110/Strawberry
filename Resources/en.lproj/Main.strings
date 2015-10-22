@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "2Jo-22-yIS"; */
+"2Jo-22-yIS.normalTitle" = "Login";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "5aB-G9-waq"; */
+"5aB-G9-waq.placeholder" = "Username";
+
+/* Class = "UINavigationItem"; title = "Root View Controller"; ObjectID = "P6i-hL-6jQ"; */
+"P6i-hL-6jQ.title" = "Root View Controller";
+
+/* Class = "UILabel"; text = "Already registered?"; ObjectID = "UKa-BC-iS9"; */
+"UKa-BC-iS9.text" = "Already registered?";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "YUS-ca-QJ4"; */
+"YUS-ca-QJ4.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "kCy-MB-XU1"; */
+"kCy-MB-XU1.normalTitle" = "Sign Up";
+
+/* Class = "UILabel"; text = "Welcome to Baby's Home!"; ObjectID = "ztN-Ue-8ES"; */
+"ztN-Ue-8ES.text" = "Welcome to Baby's Home!";
