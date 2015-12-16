@@ -1,4 +1,4 @@
-# PokerRoom
+# Strawberry
 An iOS network application for fitness/workout. 
 
 
